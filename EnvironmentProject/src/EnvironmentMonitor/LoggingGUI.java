@@ -47,8 +47,6 @@ public class LoggingGUI extends Application {
 		Button hello = new Button("sdgfsgas");
 		mainPane.setCenter(hello);
 		
-		
-		
 	}
 	public void setStage(Stage primaryStage, Scene scene) {
 		primaryStage.setTitle("Develop a new Environment");
