@@ -6,6 +6,7 @@ public class EnvironmentMonitor {
 	private ArrayList<Environment> environment;
 	private Volunteer volunteer;
 	
+	
 	public EnvironmentMonitor() {
 		environment = new ArrayList<>();
 	}
@@ -20,6 +21,10 @@ public class EnvironmentMonitor {
 	public Volunteer getVolunteer() {
 		return this.volunteer;
 	}
+	public String getJobs() {
+		return "";
+	}
+	
 	
 
 }

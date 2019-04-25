@@ -8,4 +8,9 @@ public abstract class Environment {
 	private ArrayList<Organism> organisms;
 	private LocalDate lastCleanedDate;
 	private ArrayList<Jobs> jobs;
+	
+	public Environment() {
+		
+	}
 }
+

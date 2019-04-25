@@ -1,5 +1,5 @@
 package EnvironmentMonitor;
 
-public class Guide {
+public class Guide extends Volunteer {
 
 }

@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 public class Volunteer {
 	private ArrayList<DesiredTask> desiredTask;
-	private String name;
+	private String userName;
 	
 	public Volunteer() {
-		this.name = name;
+		this.userName = userName;
 	}
-	public void getDesiredTask() {
-		
+	public ArrayList<DesiredTask> getDesiredTask() {
+		return this.desiredTask;
 	}
 	public String toString() {
-		return name;
+		return userName;
 	}
 }
