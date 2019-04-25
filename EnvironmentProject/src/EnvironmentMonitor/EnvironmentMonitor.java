@@ -22,6 +22,19 @@ public class EnvironmentMonitor {
 	public void createJobs(String jobName, String description, String skills) {
 		environments.addJobs(new Jobs(jobName, description, DesiredTask.valueOf(skills)));
 	}
+	public void createAutomaticVolunteers() {
+		Volunteer volunteer1 = new Volunteer("adsf");
+		Volunteer volunteer2 = new Volunteer("adsf");
+		environments.addVolunteers(volunteer1);
+		environments.addVolunteers(volunteer2);
+		volunteer1.AddDesiredTasks("Pick up Trash");
+		volunteer2.AddDesiredTasks("");
+		
+		
+	}
+	public void createVolunteers(String volunteerName) {
+		environments.addVolunteers(new Volunteer(volunteerName));
+	}
 
 	public void setEnvironment(ArrayList<Environment> environment) {
 		this.environment = environment;
@@ -29,10 +42,4 @@ public class EnvironmentMonitor {
 	public Volunteer getVolunteer() {
 		return this.volunteer;
 	}
-	public String getJobs() {
-		return "";
-	}
-	
-	
-
 }
