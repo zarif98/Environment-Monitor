@@ -9,9 +9,10 @@ public abstract class Environment {
 	private LocalDate lastCleanedDate;
 	private ArrayList<Jobs> jobs;
 	private ArrayList<Volunteer> volunteers;
+	private String environmentName;
 	
-	public Environment() {
-		
+	public Environment(String environmentName) {
+		this.environmentName = environmentName;
 	}
 	public void addJobs(Jobs job) {
 		jobs.add(job);
