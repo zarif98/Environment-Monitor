@@ -12,5 +12,8 @@ public abstract class Environment {
 	public Environment() {
 		
 	}
+	public void addJobs(Jobs job) {
+		jobs.add(job);
+	}
 }
 
