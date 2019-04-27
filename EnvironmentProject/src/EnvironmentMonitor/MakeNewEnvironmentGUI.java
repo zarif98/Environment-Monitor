@@ -12,6 +12,9 @@ import javafx.stage.Stage;
 
 public class MakeNewEnvironmentGUI extends Application {
 
+	/**
+	 * Start up stage and display it, is called from the StartingGUI
+	 */
 	public static void generate() {
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
@@ -24,7 +27,6 @@ public class MakeNewEnvironmentGUI extends Application {
 		Button yesButton = new Button("Submit");
 		
 		
-		
 		VBox layout = new VBox(10);
 		layout.getChildren().addAll(yesButton, text);
 		layout.setAlignment(Pos.CENTER);
@@ -32,27 +34,5 @@ public class MakeNewEnvironmentGUI extends Application {
 		stage.setScene(scene);
 		stage.showAndWait();
 		
-	}
-
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
-		BorderPane mainPane = new BorderPane();
-		primaryStage.setWidth(1000);
-		setupControls(mainPane);
-		Scene scene = new Scene(mainPane);
-		setStage(primaryStage, scene);
-	}
-	public void setupControls(BorderPane mainPane) {
-		Button hello = new Button("sdgfsgas");
-		mainPane.setCenter(hello);
-		
-		
-		
-	}
-	public void setStage(Stage primaryStage, Scene scene) {
-		primaryStage.setTitle("Develop a new Environment");
-		primaryStage.setScene(scene);
-		primaryStage.show();
 	}
 }

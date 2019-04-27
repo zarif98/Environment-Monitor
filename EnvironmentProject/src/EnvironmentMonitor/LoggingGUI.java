@@ -12,45 +12,44 @@ import javafx.stage.Stage;
 
 public class LoggingGUI extends Application {
 
+	/**
+	 * Start up stage and display it, is called from the StartingGUI
+	 */
 	public static void generate() {
-		Stage stage = new Stage();
-		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.setTitle("Logging");
-		stage.setWidth(1000);
-		
+		Stage stage = setStage();
+		setupControls();
+	}
+	
+	
+	/**
+	 * Generate elements, organize them, and show the stage
+	 */
+	private static void setupControls() {
+		//elements
 		TextField text = new TextField();
 		text.setPromptText("Volunteer Name");
 		
 		Button yesButton = new Button("Submit");
 		
 		
-		
+		//VBox and stage setting
 		VBox layout = new VBox(10);
 		layout.getChildren().addAll(yesButton, text);
 		layout.setAlignment(Pos.CENTER);
 		Scene scene = new Scene(layout);
 		stage.setScene(scene);
 		stage.showAndWait();
-		
 	}
-
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
-		BorderPane mainPane = new BorderPane();
-		primaryStage.setWidth(1000);
-		setupControls(mainPane);
-		Scene scene = new Scene(mainPane);
-		setStage(primaryStage, scene);
-	}
-	public void setupControls(BorderPane mainPane) {
-		Button hello = new Button("sdgfsgas");
-		mainPane.setCenter(hello);
-		
-	}
-	public void setStage(Stage primaryStage, Scene scene) {
-		primaryStage.setTitle("Develop a new Environment");
-		primaryStage.setScene(scene);
-		primaryStage.show();
+	
+	/**
+	 * Create stage and set up general properties
+	 * @return stage
+	 */
+	private static Stage setStage() {
+		Stage stage = new Stage();
+		stage.initModality(Modality.APPLICATION_MODAL);
+		stage.setTitle("Logging");
+		stage.setWidth(1000);
+		return stage;
 	}
 }
