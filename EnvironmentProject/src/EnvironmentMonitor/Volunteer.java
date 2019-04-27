@@ -3,16 +3,21 @@ package EnvironmentMonitor;
 import java.util.ArrayList;
 
 public class Volunteer {
-	private ArrayList<DesiredTask> desiredTask;
-	private String name;
+	private String userName;
+	private ArrayList<DesiredTask> desiredTasks;
 	
-	public Volunteer() {
-		this.name = name;
+	public Volunteer(String userName) {
+		this.userName = userName;
+		this.desiredTasks = new ArrayList<>();
 	}
-	public void getDesiredTask() {
-		
+	public ArrayList<DesiredTask> getDesiredTask() {
+		return desiredTasks;
 	}
 	public String toString() {
-		return name;
+		return userName +" " + desiredTasks.toString();
 	}
+	public void AddDesiredTasks(String desiredTask) {
+		desiredTasks.add(DesiredTask.valueOf(desiredTask));
+	}
+	
 }

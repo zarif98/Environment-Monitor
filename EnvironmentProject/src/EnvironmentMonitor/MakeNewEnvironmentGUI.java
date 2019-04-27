@@ -26,7 +26,6 @@ public class MakeNewEnvironmentGUI extends Application {
 		
 		Button yesButton = new Button("Submit");
 		
-		
 		VBox layout = new VBox(10);
 		layout.getChildren().addAll(yesButton, text);
 		layout.setAlignment(Pos.CENTER);
