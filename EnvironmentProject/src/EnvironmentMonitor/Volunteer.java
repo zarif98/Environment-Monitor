@@ -1,23 +1,107 @@
 package EnvironmentMonitor;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Volunteer {
-	private String userName;
-	private ArrayList<DesiredTask> desiredTasks;
+	private String username;
+	private String password;
+	private HashSet<DesiredTask> desiredTasks;
+	private boolean isAdmin;
 	
-	public Volunteer(String userName) {
-		this.userName = userName;
-		this.desiredTasks = new ArrayList<>();
+	/**
+	 * Constructor for Volunteer given only username
+	 * Defaults to empty password and desiredTasks, with no admin
+	 * @param username
+	 */
+	public Volunteer(String username) {
+		this(username, "", new HashSet<DesiredTask>(), false);
 	}
-	public ArrayList<DesiredTask> getDesiredTask() {
-		return desiredTasks;
+	
+	/**
+	 * Constructor for Volunteer with all information
+	 * @param username
+	 * @param password
+	 * @param desiredTasks
+	 * @param isAdmin
+	 */
+	public Volunteer(String username, String password, HashSet<DesiredTask> desiredTasks, boolean isAdmin) {
+		this.username = username;
+		this.password = password;
+		this.desiredTasks = desiredTasks;
+		this.isAdmin = isAdmin;
 	}
+	
+	/**
+	 * Returns whether they are admin and the username
+	 */
 	public String toString() {
-		return userName +" " + desiredTasks.toString();
+		return (isAdmin?"Admin ":"User ") + username;
 	}
-	public void AddDesiredTasks(String desiredTask) {
-		desiredTasks.add(DesiredTask.valueOf(desiredTask));
+	
+	/**
+	 * Add desired task to list
+	 * @param desiredTask task to add
+	 * @return true if it was added, false if not
+	 */
+	public boolean addDesiredTask(DesiredTask desiredTask) {
+		return desiredTasks.add(desiredTask);
+	}
+	
+	/**
+	 * Remove desired task from list
+	 * @param desiredTask task to remove
+	 * @return true if it was removed, false if not
+	 */
+	public boolean removeDesiredTask(DesiredTask desiredTask) {
+		return desiredTasks.remove(desiredTask);
+	}
+	
+	/**
+	 * Getter for username
+	 * @return username
+	 */
+	public String getUsername() {
+		return username;
+	}
+
+	/**
+	 * Setter for username
+	 * @param username
+	 */
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	/**
+	 * Getter for password
+	 * @return password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * Setter for password
+	 * @param password
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	/**
+	 * Getter for isAdmin
+	 * @return isAdmin
+	 */
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	/**
+	 * Setter for isAdmin
+	 * @param isAdmin
+	 */
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 	
 }
