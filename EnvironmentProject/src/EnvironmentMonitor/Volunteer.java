@@ -14,7 +14,7 @@ public class Volunteer {
 	 * @param username
 	 */
 	public Volunteer(String username) {
-		this(username, "", new HashSet<DesiredTask>(), false);
+		this(username, "", false);
 	}
 	
 	/**
@@ -24,10 +24,10 @@ public class Volunteer {
 	 * @param desiredTasks
 	 * @param isAdmin
 	 */
-	public Volunteer(String username, String password, HashSet<DesiredTask> desiredTasks, boolean isAdmin) {
+	public Volunteer(String username, String password, boolean isAdmin) {
 		this.username = username;
 		this.password = password;
-		this.desiredTasks = desiredTasks;
+		this.desiredTasks = new HashSet<DesiredTask>();
 		this.isAdmin = isAdmin;
 	}
 	
@@ -35,7 +35,7 @@ public class Volunteer {
 	 * Returns whether they are admin and the username
 	 */
 	public String toString() {
-		return (isAdmin?"Admin ":"User ") + username;
+		return (isAdmin?"admin ":"user ") + username;
 	}
 	
 	/**
