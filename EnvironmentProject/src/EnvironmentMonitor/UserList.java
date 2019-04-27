@@ -8,9 +8,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashSet;
 
-public class UserList  implements Serializable{
-	
-	private static final long serialVersionUID = 12122112221L;
+public class UserList {
 	
 	private static final String USERS_FILE = "SavedInfo/users.ser";
 	
@@ -34,7 +32,8 @@ public class UserList  implements Serializable{
 		try {
 			fileIn = new FileInputStream(USERS_FILE);
 			in = new ObjectInputStream(fileIn);
-			volunteers = ((UserList)in.readObject()).getVolunteers();
+			volunteers = (HashSet<Volunteer>)in.readObject();
+			System.out.println("Retreived Data");
 		}
 		catch (ClassNotFoundException c) {
 			System.out.println("Object class not found");
@@ -56,13 +55,17 @@ public class UserList  implements Serializable{
 		}
 	}
 	
+	/**
+	 * Serialize volunteer
+	 */
 	private void serializeVolunteers() {
 		try {
 			FileOutputStream fileOut = new FileOutputStream(USERS_FILE);
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(this);
+			out.writeObject(volunteers);
 			out.close();
 			fileOut.close();
+			System.out.println("Serializing classes");
 		}
 		catch (IOException i) {
 			i.printStackTrace();

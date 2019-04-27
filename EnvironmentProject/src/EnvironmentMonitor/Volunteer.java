@@ -1,8 +1,9 @@
 package EnvironmentMonitor;
 
+import java.io.Serializable;
 import java.util.HashSet;
 
-public class Volunteer {
+public class Volunteer implements Serializable {
 	private String username;
 	private String password;
 	private HashSet<DesiredTask> desiredTasks;
