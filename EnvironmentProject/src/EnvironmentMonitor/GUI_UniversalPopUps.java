@@ -30,6 +30,7 @@ public class GUI_UniversalPopUps {
 			Scene stageScene = new Scene(comp,250,50);
 			newStage.setScene(stageScene);
 			newStage.show();
+			//
 		}
 		else if(obj == GUI_MakeEnvironment.class && num == 2) {
 			Stage newStage = new Stage();
