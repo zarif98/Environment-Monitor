@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class GUI_FindJobs {
+public class GUI_FindJobs implements isDialog {
 
 	/**
 	 * Code for dialog in which 

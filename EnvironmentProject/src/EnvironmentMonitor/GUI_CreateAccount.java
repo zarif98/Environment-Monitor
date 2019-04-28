@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class GUI_CreateAccount {
+public class GUI_CreateAccount implements isDialog {
 	
 	/**
 	 * Code for dialog in which a new account is created
@@ -37,7 +37,7 @@ public class GUI_CreateAccount {
 				System.err.println("Username taken");
 			}
 			else {
-				users.addVolunteer(new Volunteer(usernameInput.getText(), passwordInput.getText(), isAdmin.isSelected()));
+				users.add(new Volunteer(usernameInput.getText(), passwordInput.getText(), isAdmin.isSelected()));
 				stage.close();
 			}
 		});
