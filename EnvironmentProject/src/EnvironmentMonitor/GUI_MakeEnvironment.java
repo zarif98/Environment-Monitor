@@ -23,6 +23,7 @@ public class GUI_MakeEnvironment implements isDialog {
 		stage.setTitle("Make New Environment");
 		stage.setMinWidth(500);
 		
+		//Textfield stuff
 		TextField environmentName = new TextField();
 		environmentName.setPromptText("Environment Name");
 		TextField longitude = new TextField();
@@ -30,13 +31,20 @@ public class GUI_MakeEnvironment implements isDialog {
 		TextField latitude = new TextField();
 		latitude.setPromptText("Latitude");
 		
+		Label location = new Label("Your Location in longitudinal and latitudinal values");
+		location.setMaxWidth(Double.MAX_VALUE);
+		location.setAlignment(Pos.CENTER_LEFT);
+		
 		CheckBox landEnvironmentBox = new CheckBox("Land Environment");
 		CheckBox waterEnvironmentBox = new CheckBox("Water Environment");
+		
+		//Universal popup message
 		Popup popup = new Popup();
 		popup.setX(300);
 		popup.setY(200);
 		
 		Button submit = new Button("Submit");
+		
 		submit.setOnAction(e ->{
 			if(landEnvironmentBox.isSelected()) {
 				LandEnvironment landEnvironment = new LandEnvironment
@@ -54,10 +62,12 @@ public class GUI_MakeEnvironment implements isDialog {
 				GUI_UniversalErrorPopUp.showStage(GUI_MakeEnvironment.class);
 			}
 		});
+		
+		
 		VBox pane = new VBox(20);
-		pane.getChildren().addAll(environmentName, landEnvironmentBox, waterEnvironmentBox, submit);
+		pane.getChildren().addAll(environmentName,location, longitude, latitude, landEnvironmentBox, waterEnvironmentBox, submit);
 		pane.setAlignment(Pos.CENTER);
-		pane.setStyle("-fx-background-color: AntiqueWhite;");
+		pane.setStyle("-fx-background-color: transparent;");
 		pane.setPadding(new Insets(20,20,20,20));
 		
 		Scene scene = new Scene(pane);
