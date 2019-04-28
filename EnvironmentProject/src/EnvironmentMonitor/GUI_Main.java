@@ -121,7 +121,7 @@ public class GUI_Main extends Application{
 			Button makeEnvironment = new Button();
 			makeEnvironment.setText("Make Environment");
 			
-			makeEnvironment.setOnAction(e -> GUI_MakeEnvironment.dialog(users));
+			makeEnvironment.setOnAction(e -> GUI_MakeEnvironment.dialog());
 			
 			Button makeJob = new Button();
 			makeJob.setText("Make Job");
