@@ -3,6 +3,7 @@ package EnvironmentMonitor;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -21,7 +22,11 @@ public class GUI_MakeEnvironment {
 		
 		TextField environmentName = new TextField();
 		environmentName.setPromptText("Environment Name");
-		environmentName.setPromptText("Environment Name");
+		Button submit = new Button("Submit");
+		submit.setOnAction(e ->{
+			Environment environment = new Environment(environmentName.getText());
+		});
+		
 		
 		VBox pane = new VBox(20);
 		pane.getChildren().addAll();
