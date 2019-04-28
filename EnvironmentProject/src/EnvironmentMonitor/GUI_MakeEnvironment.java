@@ -53,19 +53,23 @@ public class GUI_MakeEnvironment implements isDialog {
 				LandEnvironment landEnvironment = new LandEnvironment
 						(environmentName.getText(), Double.parseDouble(latitude.getText())
 								, Double.parseDouble(longitude.getText()));
+				GUI_UniversalPopUps.showStage(GUI_MakeEnvironment.class, 2);
+				
 			}
 			else if(waterEnvironmentBox.isSelected()) {
 				LandEnvironment landEnvironment = new LandEnvironment
 						(environmentName.getText(), Double.parseDouble(latitude.getText())
 								, Double.parseDouble(longitude.getText()));
+				GUI_UniversalPopUps.showStage(GUI_MakeEnvironment.class, 2);
 			}
 			else if(landEnvironmentBox.isSelected() && waterEnvironmentBox.isSelected()) {
 				LandEnvironment landEnvironment = new LandEnvironment
 						(environmentName.getText(), Double.parseDouble(latitude.getText())
 								, Double.parseDouble(longitude.getText()));
+				GUI_UniversalPopUps.showStage(GUI_MakeEnvironment.class, 2);
 			}
 			else{
-				GUI_UniversalErrorPopUp.showStage(GUI_MakeEnvironment.class);
+				GUI_UniversalPopUps.showStage(GUI_MakeEnvironment.class, 1);
 			}
 		});
 		
