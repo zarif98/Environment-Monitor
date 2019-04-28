@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -23,10 +24,7 @@ public class GUI_MakeEnvironment implements isDialog {
 		TextField environmentName = new TextField();
 		environmentName.setPromptText("Environment Name");
 		
-		Button submit = new Button("Submit");
-		submit.setOnAction(e ->{
-			////
-		});
+		CheckBox LandEnvironmentBox = new CheckBox();
 		
 		
 		VBox pane = new VBox(20);
