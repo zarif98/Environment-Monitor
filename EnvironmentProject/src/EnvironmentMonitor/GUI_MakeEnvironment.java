@@ -14,7 +14,7 @@ public class GUI_MakeEnvironment implements isDialog {
 	/**
 	 * Code for dialog in which 
 	 */
-	public static void dialog() {
+	public static void dialog(EnvironmentList environments) {
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("Make New Environment");
