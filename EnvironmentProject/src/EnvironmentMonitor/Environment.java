@@ -9,10 +9,14 @@ public abstract class Environment {
 	private LocalDate lastCleanedDate;
 	private ArrayList<Job> jobs;
 	private ArrayList<Volunteer> volunteers;
-	private String environmentName;
+	protected String environmentName;
+	protected double longitude;
+	protected static double latitude;
 	
-	public Environment(String environmentName) {
+	public Environment(String environmentName, double latitude, double longitude) {
 		this.environmentName = environmentName;
+		this.longitude = longitude;
+		this.latitude = latitude;
 	}
 	public void addJob(Job job) {
 		jobs.add(job);
@@ -20,5 +24,9 @@ public abstract class Environment {
 	public void addVolunteers(Volunteer volunteer) {
 		volunteers.add(volunteer);
 	}
+	public abstract double distanceTo();
+	public abstract String toString();
+	
+	
 }
 

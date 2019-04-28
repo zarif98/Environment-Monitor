@@ -25,6 +25,10 @@ public class GUI_MakeEnvironment implements isDialog {
 		
 		TextField environmentName = new TextField();
 		environmentName.setPromptText("Environment Name");
+		TextField longitude = new TextField();
+		longitude.setPromptText("Longitude");
+		TextField latitude = new TextField();
+		latitude.setPromptText("Latitude");
 		
 		CheckBox landEnvironmentBox = new CheckBox("Land Environment");
 		CheckBox waterEnvironmentBox = new CheckBox("Water Environment");
@@ -35,13 +39,16 @@ public class GUI_MakeEnvironment implements isDialog {
 		Button submit = new Button("Submit");
 		submit.setOnAction(e ->{
 			if(landEnvironmentBox.isSelected()) {
-				LandEnvironment landEnvironment = new LandEnvironment(environmentName.getText());
+				LandEnvironment landEnvironment = new LandEnvironment
+						(environmentName.getText(), Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText()));
 			}
 			else if(waterEnvironmentBox.isSelected()) {
-				WaterEnvironment waterEnvironment = new WaterEnvironment(environmentName.getText());
+				LandEnvironment landEnvironment = new LandEnvironment
+						(environmentName.getText(), Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText()));
 			}
 			else if(landEnvironmentBox.isSelected() && waterEnvironmentBox.isSelected()) {
-				WaterAndLandEnvironment waterAndLandEnvironment = new WaterAndLandEnvironment(environmentName.getText());
+				LandEnvironment landEnvironment = new LandEnvironment
+						(environmentName.getText(), Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText()));
 			}
 			else{
 				GUI_UniversalErrorPopUp.showStage(GUI_MakeEnvironment.class);
