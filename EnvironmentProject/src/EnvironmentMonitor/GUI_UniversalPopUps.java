@@ -18,24 +18,11 @@ import javafx.stage.Stage;
 public class GUI_UniversalPopUps {
 
 	public static void showStage(Object obj, int num){
-		if(obj == GUI_MakeEnvironment.class && num == 1 ) {
+	
+		if(obj == GUI_MakeEnvironment.class && num == 2) {
 			Stage newStage = new Stage();
 			VBox comp = new VBox();
-			Label warning = new Label("Please pick one or both of the checkboxes");
-			warning.setMaxWidth(Double.MAX_VALUE);
-			warning.setAlignment(Pos.BOTTOM_CENTER);
-
-			comp.getChildren().add(warning);
-
-			Scene stageScene = new Scene(comp,250,50);
-			newStage.setScene(stageScene);
-			newStage.show();
-			//
-		}
-		else if(obj == GUI_MakeEnvironment.class && num == 2) {
-			Stage newStage = new Stage();
-			VBox comp = new VBox();
-			Label registration = new Label("Would you like to add Jobs for your registered environment?");
+			Label registration = new Label("Would you like to add Jobs to your registered environment?");
 			Button addJobs = new Button("Add Jobs");
 			addJobs.setAlignment(Pos.CENTER_RIGHT);
 			registration.setMaxWidth(Double.MAX_VALUE);

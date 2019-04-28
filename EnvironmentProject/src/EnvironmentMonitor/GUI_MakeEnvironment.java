@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Popup;
@@ -69,7 +71,10 @@ public class GUI_MakeEnvironment implements isDialog {
 				GUI_UniversalPopUps.showStage(GUI_MakeEnvironment.class, 2);
 			}
 			else{
-				GUI_UniversalPopUps.showStage(GUI_MakeEnvironment.class, 1);
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Environment Creation Error");
+				alert.setHeaderText("Please check off one of the check boxes");
+				alert.showAndWait();
 			}
 		});
 		
