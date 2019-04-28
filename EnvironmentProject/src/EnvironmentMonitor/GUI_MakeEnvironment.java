@@ -45,6 +45,7 @@ public class GUI_MakeEnvironment implements isDialog {
 			}
 			else{
 				GUI_UniversalErrorPopUp.showStage(GUI_MakeEnvironment.class);
+				//
 			}
 		});
 		VBox pane = new VBox(20);
