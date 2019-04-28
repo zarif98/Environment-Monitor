@@ -31,7 +31,10 @@ public class GUI_MakeEnvironment implements isDialog {
 		TextField latitude = new TextField();
 		latitude.setPromptText("Latitude");
 		
-		Label location = new Label("Your Location in longitudinal and latitudinal values");
+		Label name = new Label("What do you want to name your Environment?");
+		name.setMaxWidth(Double.MAX_VALUE);
+		name.setAlignment(Pos.CENTER_LEFT);
+		Label location = new Label("Your location in longitudinal and latitudinal values");
 		location.setMaxWidth(Double.MAX_VALUE);
 		location.setAlignment(Pos.CENTER_LEFT);
 		
@@ -65,7 +68,7 @@ public class GUI_MakeEnvironment implements isDialog {
 		
 		
 		VBox pane = new VBox(20);
-		pane.getChildren().addAll(environmentName,location, longitude, latitude, landEnvironmentBox, waterEnvironmentBox, submit);
+		pane.getChildren().addAll(name, environmentName,location, longitude, latitude, landEnvironmentBox, waterEnvironmentBox, submit);
 		pane.setAlignment(Pos.CENTER);
 		pane.setStyle("-fx-background-color: transparent;");
 		pane.setPadding(new Insets(20,20,20,20));

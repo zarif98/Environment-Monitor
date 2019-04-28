@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -54,7 +55,7 @@ public class GUI_Main extends Application{
 		TextField usernameInput = new TextField();
 		usernameInput.setPromptText("username");
 		
-		TextField passwordInput = new TextField();
+		PasswordField passwordInput = new PasswordField();
 		passwordInput.setPromptText("password");
 		
 		Button createAccountButton = new Button();

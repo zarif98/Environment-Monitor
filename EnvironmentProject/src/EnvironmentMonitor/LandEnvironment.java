@@ -16,10 +16,10 @@ public class LandEnvironment extends Environment implements HasLand {
 	}
 	public double distanceTo() {
 		double STATUTE_MILES_PER_NAUTICAL_MILE = 1.15077945;
-        double lat1 = Math.toRadians(39.70701);
-        double lon1 = Math.toRadians(-75.1207);
-        double lat2 = Math.toRadians(this.latitude);
-        double lon2 = Math.toRadians(this.longitude);
+        double lat1 = Math.toRadians(this.latitude);
+        double lon1 = Math.toRadians(this.longitude);
+        double lat2 = Math.toRadians(39.70701);
+        double lon2 = Math.toRadians(75.1207);
 
         // great circle distance in radians, using law of cosines formula
         double angle = Math.acos(Math.sin(lat1) * Math.sin(lat2)
