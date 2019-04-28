@@ -15,7 +15,7 @@ public class GUI_FindJobs implements isDialog {
 	/**
 	 * Code for dialog in which 
 	 */
-	public static void dialog(UserList users) {
+	public static void dialog() {
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("");

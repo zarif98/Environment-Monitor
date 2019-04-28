@@ -19,6 +19,8 @@ import javafx.stage.Stage;
 public class GUI_Main extends Application{
 
 	private static final UserList users = new UserList();
+	private static final JobList jobs = new JobList();
+	private static final EnvironmentList environments = new EnvironmentList();
 	
 	/**
 	 * Main method launches the application and calls the start method
@@ -121,7 +123,7 @@ public class GUI_Main extends Application{
 			Button makeEnvironment = new Button();
 			makeEnvironment.setText("Make Environment");
 			
-			makeEnvironment.setOnAction(e -> GUI_MakeEnvironment.dialog());
+			makeEnvironment.setOnAction(e -> GUI_MakeEnvironment.dialog(environments));
 			
 			Button makeJob = new Button();
 			makeJob.setText("Make Job");
