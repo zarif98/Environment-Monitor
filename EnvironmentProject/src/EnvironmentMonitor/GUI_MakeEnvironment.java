@@ -22,9 +22,10 @@ public class GUI_MakeEnvironment {
 		
 		TextField environmentName = new TextField();
 		environmentName.setPromptText("Environment Name");
+		
 		Button submit = new Button("Submit");
 		submit.setOnAction(e ->{
-			Environment environment = new Environment(environmentName.getText());
+			
 		});
 		
 		
