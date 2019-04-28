@@ -31,8 +31,7 @@ public class LandEnvironment extends Environment implements HasLand {
         return statuteMiles;
 	}
 	public String toString() {
-		return environmentName + " (" + latitude + ", " + longitude + ")" +
-	"is" + distanceTo() + "away";
+		return super.toString();
 	}
 
 }

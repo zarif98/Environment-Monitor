@@ -13,7 +13,8 @@ public abstract class Environment {
 	protected double longitude;
 	protected static double latitude;
 	
-	public Environment(String environmentName, double latitude, double longitude) {
+	public Environment(String environmentName, double latitude
+			, double longitude) {
 		this.environmentName = environmentName;
 		this.longitude = longitude;
 		this.latitude = latitude;
@@ -25,7 +26,10 @@ public abstract class Environment {
 		volunteers.add(volunteer);
 	}
 	public abstract double distanceTo();
-	public abstract String toString();
+	public String toString() {
+		return environmentName + " (" + latitude + ", " + longitude + ")" +
+				" is " + distanceTo() + "km away.";
+	}
 	
 	
 }

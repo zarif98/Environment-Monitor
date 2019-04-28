@@ -9,8 +9,10 @@ public class TestDriver {
 //		volunteer.AddDesiredTasks("workWithAnimals");
 //		System.out.println(volunteer);
 		
-		LandEnvironment environment = new LandEnvironment("sdaf", 40.34, -74.65904);
-		System.out.println(environment.distanceTo());
+//		Environment environment = new LandEnvironment("Princeton", 40.34, 74.65904);
+//		Environment environment1 = new WaterAndLandEnvironment("Aleghany National Forest", 41.6488, 79.0061);
+//		System.out.println(environment);
+//		System.out.println(environment1);
 		
 	}
 

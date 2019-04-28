@@ -29,7 +29,6 @@ public class WaterAndLandEnvironment extends Environment implements HasWater, Ha
         return statuteMiles;
 	}
 	public String toString() {
-		return environmentName + " (" + latitude + ", " + longitude + ")" +
-	"is" + distanceTo() + "away";
+		return super.toString();
 	}
 }

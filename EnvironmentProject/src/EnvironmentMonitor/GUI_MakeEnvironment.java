@@ -21,7 +21,7 @@ public class GUI_MakeEnvironment implements isDialog {
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("Make New Environment");
-		stage.setMinWidth(500);
+		stage.setMinWidth(400);
 		
 		//Textfield stuff
 		TextField environmentName = new TextField();
@@ -34,7 +34,7 @@ public class GUI_MakeEnvironment implements isDialog {
 		Label name = new Label("What do you want to name your Environment?");
 		name.setMaxWidth(Double.MAX_VALUE);
 		name.setAlignment(Pos.CENTER_LEFT);
-		Label location = new Label("Your location in longitudinal and latitudinal values");
+		Label location = new Label("Your location in longitudinal and latitudinal values:");
 		location.setMaxWidth(Double.MAX_VALUE);
 		location.setAlignment(Pos.CENTER_LEFT);
 		
