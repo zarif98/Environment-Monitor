@@ -7,7 +7,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class GUI_MakeJob {
+public class GUI_MakeJob implements isDialog {
 
 	/**
 	 * Code for dialog in which 

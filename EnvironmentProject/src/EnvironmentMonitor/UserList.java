@@ -8,70 +8,18 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashSet;
 
-public class UserList {
+
+public class UserList extends ObjectList{
 	
 	private static final String USERS_FILE = "SavedInfo/users.ser";
 	
-	private HashSet<Volunteer> volunteers;
-	
 	/**
-	 * Constructor for UserList, creates HashSet and calls deserializeCurrentFile
+	 * Constructor for UserList, creates HashSet passes the Users file
 	 */
 	public UserList() {
-		volunteers = new HashSet<Volunteer>();
-		deserializeVolunteers();
+		super(new HashSet<Volunteer>(), USERS_FILE);
 	}
 
-	/**
-	 * Tries to deserialize USERS_FILE and put information into volunteers
-	 */
-	private void deserializeVolunteers() {
-		FileInputStream fileIn = null;
-		ObjectInputStream in = null;
-		
-		try {
-			fileIn = new FileInputStream(USERS_FILE);
-			in = new ObjectInputStream(fileIn);
-			volunteers = (HashSet<Volunteer>)in.readObject();
-			System.out.println("Retreived Data");
-		}
-		catch (ClassNotFoundException c) {
-			System.out.println("Object class not found");
-			c.printStackTrace();
-			return;
-		}
-		catch (Exception e) {
-			System.out.println(e.getClass().getSimpleName() + 
-					": " + e.getMessage() + "\n");
-		}
-		finally {
-			try {
-				in.close();
-				fileIn.close();
-			}
-			catch (Exception e) {
-				System.out.println(e.getMessage() + "\n");
-			}
-		}
-	}
-	
-	/**
-	 * Serialize volunteer
-	 */
-	private void serializeVolunteers() {
-		try {
-			FileOutputStream fileOut = new FileOutputStream(USERS_FILE);
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(volunteers);
-			out.close();
-			fileOut.close();
-			System.out.println("Serializing classes");
-		}
-		catch (IOException i) {
-			i.printStackTrace();
-		}
-	}
-	
 	/**
 	 * Check if volunteer exists with given parameters
 	 * @param username
@@ -79,9 +27,9 @@ public class UserList {
 	 * @return volunteer if they exist, null otherwise
 	 */
 	public Volunteer getUser(String username, String password) {
-		for(Volunteer volunteer: volunteers) {
-			if(volunteer.getUsername().equals(username) && volunteer.getPassword().equals(password)) {
-				return volunteer;
+		for(Object volunteer: set) {
+			if(((Volunteer)volunteer).getUsername().equals(username) && ((Volunteer)volunteer).getPassword().equals(password)) {
+				return (Volunteer)volunteer;
 			}
 		}
 		return null;
@@ -93,41 +41,11 @@ public class UserList {
 	 * @return true if it already exists
 	 */
 	public boolean usernameTaken(String username) {
-		for(Volunteer volunteer: volunteers) {
-			if(volunteer.getUsername().equals(username)) {
+		for(Object volunteer: set) {
+			if(((Volunteer)volunteer).getUsername().equals(username)) {
 				return true;
 			}
 		}
 		return false;
-	}
-	
-	/**
-	 * Add volunteer to list
-	 * @param volunteer
-	 * @return true if successful
-	 */
-	public boolean addVolunteer(Volunteer volunteer) {
-		if(volunteers.add(volunteer)) {
-			serializeVolunteers();
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * Remove volunteer from list
-	 * @param volunteer
-	 * @return true if successful
-	 */
-	public boolean removeVolunteer(Volunteer volunteer) {
-		if(volunteers.remove(volunteer)) {
-			serializeVolunteers();
-			return true;
-		}
-		return false;
-	}
-	
-	public HashSet<Volunteer> getVolunteers(){
-		return volunteers;
 	}
 }

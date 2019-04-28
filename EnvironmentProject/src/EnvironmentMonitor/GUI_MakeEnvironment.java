@@ -9,7 +9,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class GUI_MakeEnvironment {
+public class GUI_MakeEnvironment implements isDialog {
 
 	/**
 	 * Code for dialog in which 
