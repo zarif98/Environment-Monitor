@@ -51,25 +51,33 @@ public class GUI_MakeEnvironment implements isDialog {
 		Button submit = new Button("Submit");
 		
 		submit.setOnAction(e ->{
-			if(landEnvironmentBox.isSelected()) {
-				LandEnvironment landEnvironment = new LandEnvironment
+			if(landEnvironmentBox.isSelected() && waterEnvironmentBox.isSelected()) {
+				WaterAndLandEnvironment waterAndLandEnvironment = new WaterAndLandEnvironment
 						(environmentName.getText(), Double.parseDouble(latitude.getText())
 								, Double.parseDouble(longitude.getText()));
+				environments.add(waterAndLandEnvironment);
 				GUI_UniversalPopUps.showStage(GUI_MakeEnvironment.class, 2);
 				
 			}
+			
 			else if(waterEnvironmentBox.isSelected()) {
+				WaterEnvironment waterEnvironment = new WaterEnvironment
+						(environmentName.getText(), Double.parseDouble(latitude.getText())
+								, Double.parseDouble(longitude.getText()));
+				environments.add(waterEnvironment);
+				GUI_UniversalPopUps.showStage(GUI_MakeEnvironment.class, 2);
+			}
+			
+			else if(landEnvironmentBox.isSelected()) {
 				LandEnvironment landEnvironment = new LandEnvironment
 						(environmentName.getText(), Double.parseDouble(latitude.getText())
 								, Double.parseDouble(longitude.getText()));
+				environments.add(landEnvironment);
 				GUI_UniversalPopUps.showStage(GUI_MakeEnvironment.class, 2);
+				
 			}
-			else if(landEnvironmentBox.isSelected() && waterEnvironmentBox.isSelected()) {
-				LandEnvironment landEnvironment = new LandEnvironment
-						(environmentName.getText(), Double.parseDouble(latitude.getText())
-								, Double.parseDouble(longitude.getText()));
-				GUI_UniversalPopUps.showStage(GUI_MakeEnvironment.class, 2);
-			}
+			
+			
 			else{
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("Environment Creation Error");
