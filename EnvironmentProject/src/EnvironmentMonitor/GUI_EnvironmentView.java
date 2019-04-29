@@ -91,8 +91,10 @@ public class GUI_EnvironmentView implements isDialog{
 
 		EnvironmentView.getColumns().setAll(colName, colDistanceTo);
 		
-		for(Environment e : GUI_Main.env)
-		sectionView.getItems().add(sect)
+		for(Object e : GUI_Main.environments.getList()){
+			EnvironmentView.getItems().add((Environment) e);
+		}
+		
 		VBox pane = new VBox(20);
 		pane.getChildren().addAll(EnvironmentView);
 		pane.setAlignment(Pos.CENTER);
