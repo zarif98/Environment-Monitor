@@ -20,6 +20,7 @@ public abstract class Environment implements Serializable{
 		this.environmentName = environmentName;
 		this.longitude = longitude;
 		this.latitude = latitude;
+		jobs = new ArrayList<Job>();
 	}
 	public void addJob(Job job) {
 		jobs.add(job);
