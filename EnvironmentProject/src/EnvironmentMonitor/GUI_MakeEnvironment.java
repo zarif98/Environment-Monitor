@@ -50,14 +50,14 @@ public class GUI_MakeEnvironment implements isDialog {
 		
 		Button submit = new Button("Submit");
 		
-		submit.setOnAction(e ->{
+		submit.setOnAction(e -> {
 			if(landEnvironmentBox.isSelected() && waterEnvironmentBox.isSelected()) {
 				WaterAndLandEnvironment waterAndLandEnvironment = new WaterAndLandEnvironment
 						(environmentName.getText(), Double.parseDouble(latitude.getText())
 								, Double.parseDouble(longitude.getText()));
 				environments.add(waterAndLandEnvironment);
 				GUI_UniversalPopUps.showStage(GUI_MakeEnvironment.class, 2);
-				
+				stage.close();
 			}
 			
 			else if(waterEnvironmentBox.isSelected()) {
@@ -66,6 +66,7 @@ public class GUI_MakeEnvironment implements isDialog {
 								, Double.parseDouble(longitude.getText()));
 				environments.add(waterEnvironment);
 				GUI_UniversalPopUps.showStage(GUI_MakeEnvironment.class, 2);
+				stage.close();
 			}
 			
 			else if(landEnvironmentBox.isSelected()) {
@@ -74,7 +75,7 @@ public class GUI_MakeEnvironment implements isDialog {
 								, Double.parseDouble(longitude.getText()));
 				environments.add(landEnvironment);
 				GUI_UniversalPopUps.showStage(GUI_MakeEnvironment.class, 2);
-				
+				stage.close();
 			}
 			
 			
