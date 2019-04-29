@@ -76,7 +76,7 @@ public class GUI_EnvironmentView implements isDialog{
 						} else {
 							Environment currentEnvironment = getTableView().getItems().get(getIndex());
 							button.setOnAction( e-> {
-								GUI_MakeJob.dialog(jobs);
+								GUI_MakeJob.dialog(currentEnvironment);
 							}
 									);
 							button.setText("Add");
@@ -92,6 +92,35 @@ public class GUI_EnvironmentView implements isDialog{
 
 		colAdd.setCellFactory(cellFactory);
 		
+		TableColumn<Environment, String> colJobs = 
+				new TableColumn<Environment, String>("View Jobs!");
+		Callback<TableColumn<Environment, String>, TableCell<Environment, String>> cellFactoryJobs = new Callback<TableColumn<Environment, String>, TableCell<Environment, String>>() {
+			public TableCell<Environment, String> call(TableColumn<Environment, String> param) {
+				final TableCell<Environment, String> cell = new TableCell<Environment, String>() {
+					private final Button button = new Button();
+
+					public void updateItem(String crn, boolean empty) {
+						if(empty) {
+							setGraphic(null);
+						} else {
+							Environment currentEnvironment = getTableView().getItems().get(getIndex());
+							button.setOnAction( e-> {
+								GUI_JobView.dialog(currentEnvironment);
+							}
+									);
+							button.setText("View");
+							button.setAlignment(Pos.BASELINE_CENTER);
+							button.setMaxWidth(Double.MAX_VALUE);
+							setGraphic(button);
+						}
+					}
+				};
+				return cell;
+			}
+		};
+
+		colJobs.setCellFactory(cellFactoryJobs);
+		
 		Label label = new Label("Can't find your registered environment you're looking for? Make one!");
 		Button newenvironment = new Button("Add Environment");
 		newenvironment.setOnAction(e -> GUI_MakeEnvironment.dialog(GUI_Main.environments));
@@ -99,7 +128,7 @@ public class GUI_EnvironmentView implements isDialog{
 
 
 
-		EnvironmentView.getColumns().setAll(colName, colDistanceTo, colAdd, findJob);
+		EnvironmentView.getColumns().setAll(colName, colDistanceTo, colAdd, colJobs);
 
 		for(Object e : GUI_Main.environments.getList()){
 			EnvironmentView.getItems().add((Environment) e);
