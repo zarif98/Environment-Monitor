@@ -52,7 +52,7 @@ public class GUI_EnvironmentView implements isDialog{
 				new TableColumn<Environment, String>("Jobs");
 		findJob.setMinWidth(80);
 		findJob.setCellValueFactory(
-				new PropertyValueFactory<Environment, String>("Job"));
+				new PropertyValueFactory<Environment, String>("Jobs"));
 
 
 		TableColumn<Environment, Double> colDistanceTo = 
