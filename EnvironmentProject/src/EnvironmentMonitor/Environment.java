@@ -13,7 +13,7 @@ public abstract class Environment implements Serializable{
 	private ArrayList<Volunteer> volunteers;
 	protected String environmentName;
 	protected double longitude;
-	protected static double latitude;
+	protected double latitude;
 	
 	public Environment(String environmentName, double latitude
 			, double longitude) {
