@@ -30,6 +30,10 @@ public class GUI_UniversalPopUps {
 			
 			StackPane.setAlignment(addJobs, Pos.CENTER_LEFT);
 			
+			addJobs.setOnAction(e-> {
+				GUI_MakeJob.dialog(GUI_Main.jobs);
+			});
+			
 
 			comp.getChildren().addAll(registration, addJobs);
 
