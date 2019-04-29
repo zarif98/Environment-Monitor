@@ -57,7 +57,7 @@ public class GUI_MakeEnvironment implements isDialog {
 						(environmentName.getText(), Double.parseDouble(latitude.getText())
 								, Double.parseDouble(longitude.getText()));
 				environments.add(waterAndLandEnvironment);
-				showStage();
+				showStage(waterAndLandEnvironment);
 				
 			}
 			
@@ -66,7 +66,7 @@ public class GUI_MakeEnvironment implements isDialog {
 						(environmentName.getText(), Double.parseDouble(latitude.getText())
 								, Double.parseDouble(longitude.getText()));
 				environments.add(waterEnvironment);
-				showStage();
+				showStage(waterEnvironment);
 			}
 			//
 			
@@ -75,7 +75,7 @@ public class GUI_MakeEnvironment implements isDialog {
 						(environmentName.getText(), Double.parseDouble(latitude.getText())
 								, Double.parseDouble(longitude.getText()));
 				environments.add(landEnvironment);
-				showStage();
+				showStage(landEnvironment);
 				
 			}
 			
@@ -99,7 +99,7 @@ public class GUI_MakeEnvironment implements isDialog {
 		stage.setScene(scene);
 		stage.showAndWait();
 	}
-	public static void showStage(){
+	public static void showStage(Environment env){
 
 		Stage newStage = new Stage();
 		VBox comp = new VBox();
@@ -112,7 +112,7 @@ public class GUI_MakeEnvironment implements isDialog {
 		StackPane.setAlignment(addJobs, Pos.CENTER_LEFT);
 
 		addJobs.setOnAction(e-> {
-			GUI_MakeJob.dialog(GUI_Main.jobs);
+			GUI_MakeJob.dialog(env);
 		});
 
 

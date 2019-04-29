@@ -23,7 +23,7 @@ public class GUI_MakeJob {
 	/**
 	 * Code for dialog in which 
 	 */
-	public static void dialog(JobList jobs) {
+	public static void dialog(Environment environment) {
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("Make New Environment");
@@ -65,7 +65,7 @@ public class GUI_MakeJob {
 				alert.showAndWait();
 			}
 			else {
-				jobs.add(new Job(jobNameInput.getText(), descriptionInput.getText(), dt));
+				environment.addJob(new Job(jobNameInput.getText(), descriptionInput.getText(), dt));
 				stage.close();
 			}
 		});
