@@ -2,13 +2,22 @@ package EnvironmentMonitor;
 
 import java.time.LocalDate;
 
-public class Organism {
-	public Organism(LocalDate lastCounted, int amount) {
-		super();
-		this.lastCounted = lastCounted;
+public abstract class Organism {
+	
+	protected LocalDate lastCounted;
+	protected int amount;
+	protected static String speciesName;
+	
+	public Organism(LocalDate lastCounted, int amount, String speciesName) {
+		lastCounted = lastCounted.now();
+		this.speciesName = speciesName;
 		this.amount = amount;
 	}
-	private LocalDate lastCounted;
-	private int amount;
+	public abstract Integer getlastCounted();
+	public abstract String speciesName();
+	
+	public String toString() {
+		return amount + " " +speciesName + " were spotted at" + lastCounted.toString()  ;
+	}
 
 }
