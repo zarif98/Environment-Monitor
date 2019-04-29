@@ -22,6 +22,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TreeTableColumn.CellDataFeatures;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -36,27 +38,27 @@ public class GUI_EnvironmentView implements isDialog{
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("Make New Environment");
 		stage.setMinWidth(500);
-				
+
 		TableView<Environment> EnvironmentView = new TableView<Environment>(); 
-		
+
 
 		TableColumn<Environment, String> colName =
 				new TableColumn<Environment, String>("Environment Name");
 		colName.setMinWidth(180);
 		colName.setCellValueFactory(
 				new PropertyValueFactory<Environment, String>("environmentName"));
-		
-		
+
+
 		TableColumn<Environment, Double> colDistanceTo = 
 				new TableColumn<Environment, Double>("Distance To");
 		colDistanceTo.setMinWidth(80);
 		colDistanceTo.setCellValueFactory(
 				new PropertyValueFactory<Environment, Double>("distanceTo"));
-		
-			
-			
+
+
+
 		TableColumn<Environment, String> colAdd = 
-		new TableColumn<Environment, String>("Add Jobs!");
+				new TableColumn<Environment, String>("Add Jobs!");
 		Callback<TableColumn<Environment, String>, TableCell<Environment, String>> cellFactory = new Callback<TableColumn<Environment, String>, TableCell<Environment, String>>() {
 			public TableCell<Environment, String> call(TableColumn<Environment, String> param) {
 				final TableCell<Environment, String> cell = new TableCell<Environment, String>() {
@@ -70,8 +72,10 @@ public class GUI_EnvironmentView implements isDialog{
 							button.setOnAction( e-> {
 								GUI_FindJobs.dialog();
 							}
-				);
+									);
 							button.setText("Add");
+							button.setAlignment(Pos.BASELINE_CENTER);
+							button.setMaxWidth(Double.MAX_VALUE);
 							setGraphic(button);
 						}
 					}
@@ -79,24 +83,24 @@ public class GUI_EnvironmentView implements isDialog{
 				return cell;
 			}
 		};
-		
+
 		colAdd.setCellFactory(cellFactory);
-		
 
 
 
-		EnvironmentView.getColumns().setAll(colName, colDistanceTo,colAdd);
-		
+
+		EnvironmentView.getColumns().setAll(colName, colDistanceTo, colAdd);
+
 		for(Object e : GUI_Main.environments.getList()){
 			EnvironmentView.getItems().add((Environment) e);
 		}
-		
+
 		VBox pane = new VBox(20);
 		pane.getChildren().addAll(EnvironmentView);
 		pane.setAlignment(Pos.CENTER);
 		pane.setStyle("-fx-background-color: AntiqueWhite;");
 		pane.setPadding(new Insets(20,20,20,20));
-		
+
 		Scene scene = new Scene(pane);
 		stage.setScene(scene);
 		stage.showAndWait();
