@@ -25,10 +25,11 @@ public abstract class Environment {
 	public void addVolunteers(Volunteer volunteer) {
 		volunteers.add(volunteer);
 	}
-	public abstract double distanceTo();
+	public abstract double getDistanceTo();
+	
 	public String toString() {
 		return environmentName + " (" + latitude + ", " + longitude + ")" +
-				" is " + distanceTo() + "km away.";
+				" is " + getDistanceTo() + "km away.";
 	}
 	
 	public String getEnvironmentName() {

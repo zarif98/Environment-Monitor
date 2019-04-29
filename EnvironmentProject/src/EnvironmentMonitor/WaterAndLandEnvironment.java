@@ -12,7 +12,7 @@ public class WaterAndLandEnvironment extends Environment implements HasWater, Ha
 		// TODO Auto-generated method stub
 		return false;
 	}
-	public double distanceTo() {
+	public double getDistanceTo() {
 		double STATUTE_MILES_PER_NAUTICAL_MILE = 1.15077945;
         double lat1 = Math.toRadians(39.70701);
         double lon1 = Math.toRadians(-75.1207);

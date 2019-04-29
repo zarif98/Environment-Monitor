@@ -6,7 +6,7 @@ public class WaterEnvironment extends Environment implements HasWater {
 		super(environmentName, latitude, longitude);
 		// TODO Auto-generated constructor stub
 	}
-	public double distanceTo() {
+	public double getDistanceTo() {
 		double STATUTE_MILES_PER_NAUTICAL_MILE = 1.15077945;
         double lat1 = Math.toRadians(39.70701);
         double lon1 = Math.toRadians(-75.1207);
