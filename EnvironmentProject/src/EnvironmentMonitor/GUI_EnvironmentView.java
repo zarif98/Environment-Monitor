@@ -70,7 +70,7 @@ public class GUI_EnvironmentView implements isDialog{
 						} else {
 							Environment currentEnvironment = getTableView().getItems().get(getIndex());
 							button.setOnAction( e-> {
-								GUI_FindJobs.dialog();
+								GUI_MakeJob.dialog(jobs);
 							}
 									);
 							button.setText("Add");
