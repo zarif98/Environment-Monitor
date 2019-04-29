@@ -96,11 +96,12 @@ public class GUI_Main extends Application{
 
 		Button findJobs = new Button();
 		findJobs.setText("Find Volunteering");
-		
+
 		findJobs.setOnAction(e -> GUI_FindJobs.dialog());
 
 		Button submitWork = new Button();
 		submitWork.setText("Submit Work");
+		submitWork.setOnAction(e -> GUI_Submit.dialog());
 
 		//place controls on pane (for all)
 		mainPane.setTop(welcomeLabel);
@@ -120,7 +121,6 @@ public class GUI_Main extends Application{
 			//create controls to interact with (admins only)
 			Button makeEnvironment = new Button();
 			makeEnvironment.setText("Make Environment");
-
 			makeEnvironment.setOnAction(e -> GUI_MakeEnvironment.dialog(environments));
 
 			Button makeJob = new Button();
