@@ -68,6 +68,7 @@ public class GUI_MakeEnvironment implements isDialog {
 				environments.add(waterEnvironment);
 				showStage();
 			}
+			//
 			
 			else if(landEnvironmentBox.isSelected()) {
 				LandEnvironment landEnvironment = new LandEnvironment
