@@ -85,6 +85,10 @@ public class GUI_EnvironmentView implements isDialog{
 		};
 
 		colAdd.setCellFactory(cellFactory);
+		
+		Label label = new Label("Can't find your registered environment you're looking for? Make one!");
+		Button newenvironment = new Button("Add Environment");
+		newenvironment.setOnAction(e -> GUI_MakeEnvironment.dialog(GUI_Main.environments));
 
 
 
@@ -96,7 +100,7 @@ public class GUI_EnvironmentView implements isDialog{
 		}
 
 		VBox pane = new VBox(20);
-		pane.getChildren().addAll(EnvironmentView);
+		pane.getChildren().addAll(EnvironmentView, label, newenvironment);
 		pane.setAlignment(Pos.CENTER);
 		pane.setStyle("-fx-background-color: AntiqueWhite;");
 		pane.setPadding(new Insets(20,20,20,20));
