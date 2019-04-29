@@ -6,7 +6,7 @@ public abstract class Organism {
 	
 	protected LocalDate lastCounted;
 	protected int amount;
-	protected static String speciesName;
+	protected String speciesName;
 	
 	public Organism(LocalDate lastCounted, int amount, String speciesName) {
 		lastCounted = lastCounted.now();

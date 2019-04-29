@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Animal extends Organism {
 
-	public Animal(LocalDate lastCounted, int amount) {
+	public Animal(LocalDate lastCounted, int amount, String speciesName) {
 		super(lastCounted, amount, speciesName);
 	}
 

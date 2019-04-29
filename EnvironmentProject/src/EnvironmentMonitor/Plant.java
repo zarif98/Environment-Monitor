@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Plant extends Organism {
 
-	public Plant(LocalDate lastCounted, int amount) {
+	public Plant(LocalDate lastCounted, int amount, String speciesName) {
 		super(lastCounted, amount, speciesName);
 		// TODO Auto-generated constructor stub
 	}
