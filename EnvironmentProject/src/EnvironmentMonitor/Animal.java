@@ -11,13 +11,13 @@ public class Animal extends Organism {
 	@Override
 	public Integer getlastCounted() {
 		// TODO Auto-generated method stub
-		return null;
+		return amount;
 	}
-
+	
 	@Override
 	public String speciesName() {
 		// TODO Auto-generated method stub
-		return null;
+		return speciesName;
 	}
 	public String toString() {
 		return super.toString();
