@@ -14,9 +14,9 @@ import javafx.stage.Stage;
 
 public class GUI_Main extends Application{
 
-	private static final UserList users = new UserList();
+	public static final UserList users = new UserList();
 	public static final JobList jobs = new JobList();
-	private static final EnvironmentList environments = new EnvironmentList();
+	public static final EnvironmentList environments = new EnvironmentList();
 
 	/**
 	 * Main method launches the application and calls the start method

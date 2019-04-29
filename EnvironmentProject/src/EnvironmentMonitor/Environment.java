@@ -31,6 +31,10 @@ public abstract class Environment {
 				" is " + distanceTo() + "km away.";
 	}
 	
+	public String getEnvironmentName() {
+		return environmentName;
+	}
+	
 	
 }
 
