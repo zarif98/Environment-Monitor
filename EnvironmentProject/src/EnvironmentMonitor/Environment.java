@@ -1,9 +1,11 @@
 package EnvironmentMonitor;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public abstract class Environment {
+public abstract class Environment implements Serializable{
+	private static final long serialVersionUID = -1507661411248543998L;
 	private ArrayList<Guide> guides;
 	private ArrayList<Organism> organisms;
 	private LocalDate lastCleanedDate;

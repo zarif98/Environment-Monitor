@@ -1,7 +1,11 @@
 package EnvironmentMonitor;
 
 public class LandEnvironment extends Environment implements HasLand {
-	private String EnvironmentType;
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7146086570856071249L;
 	
 	public LandEnvironment(String environmentName, double latitude, double longitude) {
 		super(environmentName, latitude, longitude);
@@ -19,7 +23,7 @@ public class LandEnvironment extends Environment implements HasLand {
         double lat1 = Math.toRadians(this.latitude);
         double lon1 = Math.toRadians(this.longitude);
         double lat2 = Math.toRadians(39.70701);
-        double lon2 = Math.toRadians(75.1207);
+        double lon2 = Math.toRadians(-75.1207);
 
         // great circle distance in radians, using law of cosines formula
         double angle = Math.acos(Math.sin(lat1) * Math.sin(lat2)
