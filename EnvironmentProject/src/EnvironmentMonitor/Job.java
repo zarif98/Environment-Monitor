@@ -1,8 +1,9 @@
 package EnvironmentMonitor;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Job {
+public class Job implements Serializable {
 	private String name;
 	private String description;
 	private DesiredTask desiredTask;

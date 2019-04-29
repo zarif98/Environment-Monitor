@@ -47,6 +47,12 @@ public class GUI_EnvironmentView implements isDialog{
 		colName.setMinWidth(180);
 		colName.setCellValueFactory(
 				new PropertyValueFactory<Environment, String>("environmentName"));
+		
+		TableColumn<Environment, String> findJob =
+				new TableColumn<Environment, String>("Jobs");
+		findJob.setMinWidth(80);
+		findJob.setCellValueFactory(
+				new PropertyValueFactory<Environment, String>("Job"));
 
 
 		TableColumn<Environment, Double> colDistanceTo = 
@@ -93,7 +99,7 @@ public class GUI_EnvironmentView implements isDialog{
 
 
 
-		EnvironmentView.getColumns().setAll(colName, colDistanceTo, colAdd);
+		EnvironmentView.getColumns().setAll(colName, colDistanceTo, colAdd, findJob);
 
 		for(Object e : GUI_Main.environments.getList()){
 			EnvironmentView.getItems().add((Environment) e);

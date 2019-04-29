@@ -52,6 +52,13 @@ public abstract class Environment implements Serializable{
 	public String getEnvironmentName() {
 		return environmentName;
 	}
+	public String getJob() {
+		String jobsy = "";
+		for(int i = 0; i < jobs.size(); i++) {
+			return jobsy = jobs.get(i).getJobName();
+		}
+		return jobsy;
+	}
 	
 	
 }
