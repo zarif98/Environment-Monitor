@@ -48,9 +48,12 @@ public class GUI_FindJobs implements isDialog {
 		
 		jobView.getColumns().setAll(colName, colDistanceTo, findJob);
 		
+		for(Object e : GUI_Main.jobs.getList()){
+			jobView.getItems().add((Environment) e);
+		}
+		
 		VBox pane = new VBox(20);
 		pane.getChildren().addAll(jobView);
-		//
 		pane.setAlignment(Pos.CENTER);
 		pane.setStyle("-fx-background-color: AntiqueWhite;");
 		pane.setPadding(new Insets(20,20,20,20));

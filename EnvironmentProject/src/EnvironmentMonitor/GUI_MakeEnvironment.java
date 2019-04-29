@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Popup;
@@ -56,8 +57,7 @@ public class GUI_MakeEnvironment implements isDialog {
 						(environmentName.getText(), Double.parseDouble(latitude.getText())
 								, Double.parseDouble(longitude.getText()));
 				environments.add(waterAndLandEnvironment);
-				GUI_UniversalPopUps.showStage(GUI_MakeEnvironment.class, 2);
-				stage.close();
+				showStage();
 			}
 			
 			else if(waterEnvironmentBox.isSelected()) {
@@ -65,17 +65,16 @@ public class GUI_MakeEnvironment implements isDialog {
 						(environmentName.getText(), Double.parseDouble(latitude.getText())
 								, Double.parseDouble(longitude.getText()));
 				environments.add(waterEnvironment);
-				GUI_UniversalPopUps.showStage(GUI_MakeEnvironment.class, 2);
-				stage.close();
+				showStage();
 			}
+			//
 			
 			else if(landEnvironmentBox.isSelected()) {
 				LandEnvironment landEnvironment = new LandEnvironment
 						(environmentName.getText(), Double.parseDouble(latitude.getText())
 								, Double.parseDouble(longitude.getText()));
 				environments.add(landEnvironment);
-				GUI_UniversalPopUps.showStage(GUI_MakeEnvironment.class, 2);
-				stage.close();
+				showStage();
 			}
 			
 			
@@ -97,5 +96,28 @@ public class GUI_MakeEnvironment implements isDialog {
 		Scene scene = new Scene(pane);
 		stage.setScene(scene);
 		stage.showAndWait();
+	}
+	public static void showStage(){
+
+		Stage newStage = new Stage();
+		VBox comp = new VBox();
+		Label registration = new Label("Would you like to add Jobs to your registered environment?");
+		Button addJobs = new Button("Add Jobs");
+		addJobs.setAlignment(Pos.CENTER_RIGHT);
+		registration.setMaxWidth(Double.MAX_VALUE);
+		registration.setAlignment(Pos.BOTTOM_CENTER);
+
+		StackPane.setAlignment(addJobs, Pos.CENTER_LEFT);
+
+		addJobs.setOnAction(e-> {
+			GUI_MakeJob.dialog(GUI_Main.jobs);
+		});
+
+
+		comp.getChildren().addAll(registration, addJobs);
+
+		Scene stageScene = new Scene(comp,400, 100);
+		newStage.setScene(stageScene);
+		newStage.show();
 	}
 }
