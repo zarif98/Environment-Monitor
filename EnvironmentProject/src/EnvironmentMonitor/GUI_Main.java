@@ -96,6 +96,8 @@ public class GUI_Main extends Application{
 
 		Button findJobs = new Button();
 		findJobs.setText("Find Volunteering");
+		
+		findJobs.setOnAction(e -> GUI_FindJobs.dialog());
 
 		Button submitWork = new Button();
 		submitWork.setText("Submit Work");
