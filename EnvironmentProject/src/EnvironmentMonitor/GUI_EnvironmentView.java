@@ -2,6 +2,8 @@ package EnvironmentMonitor;
 
 import java.util.Arrays;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,6 +19,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TreeTableColumn.CellDataFeatures;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
@@ -35,6 +38,7 @@ public class GUI_EnvironmentView implements isDialog{
 		stage.setMinWidth(500);
 				
 		TableView<Environment> EnvironmentView = new TableView<Environment>(); 
+		
 
 		TableColumn<Environment, String> colName =
 				new TableColumn<Environment, String>("Environment Name");
@@ -48,33 +52,26 @@ public class GUI_EnvironmentView implements isDialog{
 		colDistanceTo.setMinWidth(80);
 		colDistanceTo.setCellValueFactory(
 				new PropertyValueFactory<Environment, Double>("distanceTo"));
-		/*
-		Callback<TableColumn<Environment, Integer>, TableCell<Environment, Integer>> cellFactory = new Callback<TableColumn<Environment, Integer>, TableCell<Environment, Integer>>() {
-			public TableCell<Environment, Integer> call(TableColumn<Environment, Integer> param) {
-				final TableCell<Environment, Integer> cell = new TableCell<Environment, Integer>() {
+		
+			
+			
+		TableColumn<Environment, String> colAdd = 
+		new TableColumn<Environment, String>("Add Jobs!");
+		Callback<TableColumn<Environment, String>, TableCell<Environment, String>> cellFactory = new Callback<TableColumn<Environment, String>, TableCell<Environment, String>>() {
+			public TableCell<Environment, String> call(TableColumn<Environment, String> param) {
+				final TableCell<Environment, String> cell = new TableCell<Environment, String>() {
 					private final Button button = new Button();
 
-					public void updateItem(Integer crn, boolean empty) {
+					public void updateItem(String crn, boolean empty) {
 						if(empty) {
 							setGraphic(null);
 						} else {
 							Environment currentEnvironment = getTableView().getItems().get(getIndex());
-							button.setOnAction(new EventHandler<ActionEvent>() {
-								public void handle(ActionEvent event) {
-										if(student.getCurrentEnvironments().containsKey(currentEnvironment.getCRN())) {
-											student.drop(currentEnvironment);
-										}
-										
-										else if((currentEnvironment instanceof OnlineConnectible) && ((OnlineConnectible)currentEnvironment).validateChoice()) {
-											student.add(currentEnvironment);
-										}
-										else {
-											student.add(currentEnvironment);
-										}
-									label.setText(student.getCurrentEnvironmentsString());
-								}
-							});
-							button.setText(currentEnvironment.getCRN().toString());
+							button.setOnAction( e-> {
+								GUI_FindJobs.dialog();
+							}
+				);
+							button.setText("Add");
 							setGraphic(button);
 						}
 					}
@@ -83,13 +80,12 @@ public class GUI_EnvironmentView implements isDialog{
 			}
 		};
 		
-		colCRN.setCellFactory(cellFactory);
-		*/
+		colAdd.setCellFactory(cellFactory);
 		
 
 
 
-		EnvironmentView.getColumns().setAll(colName, colDistanceTo);
+		EnvironmentView.getColumns().setAll(colName, colDistanceTo,colAdd);
 		
 		for(Object e : GUI_Main.environments.getList()){
 			EnvironmentView.getItems().add((Environment) e);
