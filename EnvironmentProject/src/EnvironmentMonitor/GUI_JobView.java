@@ -43,7 +43,8 @@ public class GUI_JobView implements isDialog{
 		stage.setMinWidth(700);
 
 
-
+		jobView.getItems().clear();
+		
 		TableColumn<Job, String> colName =
 				new TableColumn<Job, String>("Job Name");
 		colName.setMinWidth(180);

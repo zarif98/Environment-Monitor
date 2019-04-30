@@ -51,14 +51,13 @@ public class GUI_MakeEnvironment implements isDialog {
 		
 		Button submit = new Button("Submit");
 		
-		submit.setOnAction(e ->{
+		submit.setOnAction(e -> {
 			if(landEnvironmentBox.isSelected() && waterEnvironmentBox.isSelected()) {
 				WaterAndLandEnvironment waterAndLandEnvironment = new WaterAndLandEnvironment
 						(environmentName.getText(), Double.parseDouble(latitude.getText())
 								, Double.parseDouble(longitude.getText()));
 				environments.add(waterAndLandEnvironment);
 				showStage(waterAndLandEnvironment);
-				
 			}
 			
 			else if(waterEnvironmentBox.isSelected()) {
@@ -76,7 +75,6 @@ public class GUI_MakeEnvironment implements isDialog {
 								, Double.parseDouble(longitude.getText()));
 				environments.add(landEnvironment);
 				showStage(landEnvironment);
-				
 			}
 			
 			
