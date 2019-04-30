@@ -11,9 +11,11 @@ public enum DesiredTask {
 	DesiredTask(String desiredTask){
 		this.desiredTask = desiredTask;
 	}
+	
 	public String getDesiredTask() {
 		return this.desiredTask;
 	}
+	
 	public String toString() {
 		return this.desiredTask;
 	}

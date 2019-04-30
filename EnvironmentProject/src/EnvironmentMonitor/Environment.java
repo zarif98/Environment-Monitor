@@ -25,6 +25,10 @@ public abstract class Environment implements Serializable{
 	public void addJob(Job job) {
 		jobs.add(job);
 	}
+	
+	public void removeJob(Job job) {
+		jobs.remove(job);
+	}
 	public void addVolunteers(Volunteer volunteer) {
 		volunteers.add(volunteer);
 	}
