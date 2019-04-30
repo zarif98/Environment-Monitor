@@ -38,13 +38,10 @@ public abstract class Environment implements Serializable{
 		return jobs.add(job);
 	}
 	
-<<<<<<< HEAD
 	public void removeJob(Job job) {
 		jobs.remove(job);
 	}
-	public void addVolunteers(Volunteer volunteer) {
-		volunteers.add(volunteer);
-=======
+
 	/**
 	 * Add volunteer to list
 	 * @param volunteer
@@ -52,7 +49,6 @@ public abstract class Environment implements Serializable{
 	 */
 	public boolean addVolunteers(Volunteer volunteer) {
 		return volunteers.add(volunteer);
->>>>>>> branch 'master' of https://github.com/zarif98/Environment-Monitor
 	}
 	
 	/**

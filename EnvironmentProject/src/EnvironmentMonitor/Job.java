@@ -27,21 +27,20 @@ public class Job implements Serializable {
 	public String getJobName() {
 		return this.name;
 	}
-<<<<<<< HEAD
 	public String getJobDescription() {
 		return jobDescription;
 	}
 	public String getDesiredTask() {
 		return desiredTask.toString();
-=======
+	}
+
 	
 	/**
 	 * Getter for description
 	 * @return description
 	 */
 	public String getDescription() {
-		return description;
->>>>>>> branch 'master' of https://github.com/zarif98/Environment-Monitor
+		return jobDescription;
 	}
 	
 	/**
