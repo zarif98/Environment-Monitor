@@ -14,7 +14,7 @@ public abstract class Organism {
 		this.amount = amount;
 	}
 	public abstract Integer getlastCounted();
-	public abstract String speciesName();
+	public abstract String getspeciesName();
 	
 	public String toString() {
 		return amount + " " +speciesName + " were spotted at" + lastCounted.toString()  ;

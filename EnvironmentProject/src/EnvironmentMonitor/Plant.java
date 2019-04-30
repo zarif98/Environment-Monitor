@@ -16,7 +16,7 @@ public class Plant extends Organism {
 	}
 
 	@Override
-	public String speciesName() {
+	public String getspeciesName() {
 		// TODO Auto-generated method stub
 		return speciesName;
 	}
