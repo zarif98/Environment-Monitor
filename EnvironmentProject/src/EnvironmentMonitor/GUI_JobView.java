@@ -37,7 +37,7 @@ public class GUI_JobView implements isDialog{
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("Showing all jobs for selected Job");
-		stage.setMinWidth(500);
+		stage.setMinWidth(700);
 
 		TableView<Job> jobView = new TableView<Job>(); 
 
@@ -50,14 +50,14 @@ public class GUI_JobView implements isDialog{
 		
 		TableColumn<Job, String> colDesc =
 				new TableColumn<Job, String>("Job Description");
-		colDesc.setMinWidth(80);
+		colDesc.setMinWidth(400);
 		colDesc.setCellValueFactory(
 				new PropertyValueFactory<Job, String>("jobDescription"));
 
 		TableColumn<Job, String> colTask =
 				new TableColumn<Job, String>("Desired Task");
-		colDesc.setMinWidth(80);
-		colDesc.setCellValueFactory(
+		colTask.setMinWidth(80);
+		colTask.setCellValueFactory(
 				new PropertyValueFactory<Job, String>("desiredTask"));
 
 

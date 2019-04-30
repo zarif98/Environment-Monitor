@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Job implements Serializable {
 	private String name;
-	private String description;
+	private String jobDescription;
 	private DesiredTask desiredTask;
 	
 	/**
@@ -14,9 +14,9 @@ public class Job implements Serializable {
 	 * @param description
 	 * @param desiredTask
 	 */
-	public Job(String name, String description, DesiredTask desiredTask) {
+	public Job(String name, String jobDescription, DesiredTask desiredTask) {
 		this.name = name;
-		this.description = description;
+		this.jobDescription = jobDescription;
 		this.desiredTask = desiredTask;
 	}
 	
@@ -27,10 +27,13 @@ public class Job implements Serializable {
 	public String getJobName() {
 		return this.name;
 	}
-	public String getDescription() {
-		return this.getDescription();
+	public String getJobDescription() {
+		return jobDescription;
+	}
+	public String getDesiredTask() {
+		return desiredTask.toString();
 	}
 	public String toString() {
-		return this.name +": " +  this.description;
+		return this.name +": " +  this.jobDescription;
 	}
 }
