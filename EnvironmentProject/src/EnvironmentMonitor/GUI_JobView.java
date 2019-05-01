@@ -39,7 +39,7 @@ public class GUI_JobView implements isDialog{
 	public static void dialog(Environment environment) {
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.setTitle("Showing all jobs for selected Job");
+		stage.setTitle("Showing all jobs for selected environment");
 		stage.setMinWidth(700);
 
 

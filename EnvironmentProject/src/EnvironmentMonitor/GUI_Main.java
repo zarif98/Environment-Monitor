@@ -126,7 +126,7 @@ public class GUI_Main extends Application{
 
 			Button makeJob = new Button();
 			makeJob.setText("Make Job");
-			makeJob.setOnAction(e -> GUI_EnvironmentView.dialog(jobs));
+			makeJob.setOnAction(e -> GUI_EnvironmentView.dialog());
 
 			//place controls on pane (admins only)
 			mainPane.setLeft(makeEnvironment);

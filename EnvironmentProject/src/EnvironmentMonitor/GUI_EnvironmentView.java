@@ -33,10 +33,10 @@ public class GUI_EnvironmentView implements isDialog{
 	/**
 	 * Code for dialog in which 
 	 */
-	public static void dialog(JobList jobs) {
+	public static void dialog() {
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.setTitle("Make New Environment");
+		stage.setTitle("Make New Job");
 		stage.setMinWidth(550);
 
 		TableView<Environment> EnvironmentView = new TableView<Environment>(); 
@@ -81,10 +81,11 @@ public class GUI_EnvironmentView implements isDialog{
 							setGraphic(null);
 						} else {
 							Environment currentEnvironment = getTableView().getItems().get(getIndex());
-							button.setOnAction( e-> {
-								GUI_MakeJob.dialog(currentEnvironment);
-							}
-									);
+							for(Object env : GUI_Main.environments.getList()) {
+								if (env.equals(currentEnvironment)) {
+									button.setOnAction( e-> GUI_MakeJob.dialog((Environment) env));
+								}
+							}		
 							button.setText("Add");
 							button.setAlignment(Pos.BASELINE_CENTER);
 							button.setMaxWidth(Double.MAX_VALUE);
@@ -110,10 +111,12 @@ public class GUI_EnvironmentView implements isDialog{
 							setGraphic(null);
 						} else {
 							Environment currentEnvironment = getTableView().getItems().get(getIndex());
-							button.setOnAction( e-> {
-								GUI_JobView.dialog(currentEnvironment);
+							for(Object env : GUI_Main.environments.getList()) {
+								if (env.equals(currentEnvironment)) {
+									button.setOnAction( e-> GUI_JobView.dialog((Environment) env));
+								}
 							}
-									);
+						
 							button.setText("View");
 							button.setAlignment(Pos.BASELINE_CENTER);
 							button.setMaxWidth(Double.MAX_VALUE);
