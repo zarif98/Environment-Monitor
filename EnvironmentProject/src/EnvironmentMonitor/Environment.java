@@ -26,6 +26,7 @@ public abstract class Environment implements Serializable{
 		this.environmentName = environmentName;
 		this.longitude = longitude;
 		this.latitude = latitude;
+		jobs = new ArrayList<Job>();
 	}
 	
 	/**
@@ -37,6 +38,10 @@ public abstract class Environment implements Serializable{
 		return jobs.add(job);
 	}
 	
+	public void removeJob(Job job) {
+		jobs.remove(job);
+	}
+
 	/**
 	 * Add volunteer to list
 	 * @param volunteer

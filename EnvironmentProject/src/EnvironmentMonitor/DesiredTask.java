@@ -16,9 +16,14 @@ public enum DesiredTask {
 		this.desiredTask = desiredTask;
 	}
 	
+	public String getDesiredTask() {
+		return this.desiredTask;
+	}
+	
 	/**
 	 * toString, returns desired task
 	 */
+
 	public String toString() {
 		return this.desiredTask;
 	}
