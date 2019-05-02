@@ -150,7 +150,10 @@ public class GUI_Main extends Application{
 	 * @param scene
 	 */
 	private void setStage(Stage primaryStage, Scene scene) {
+		
+		
 		primaryStage.setScene(scene);
+		scene.getStylesheets().add(getClass().getResource("EnvironmentDesign.css").toExternalForm());
 		primaryStage.setTitle("Environment Monitor");
 		primaryStage.show();
 	}

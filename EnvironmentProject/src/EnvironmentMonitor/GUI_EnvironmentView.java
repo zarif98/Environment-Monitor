@@ -37,7 +37,7 @@ public class GUI_EnvironmentView implements isDialog{
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("Make New Environment");
-		stage.setMinWidth(500);
+		stage.setMinWidth(550);
 
 		TableView<Environment> EnvironmentView = new TableView<Environment>(); 
 

@@ -6,6 +6,7 @@ public enum DesiredTask {
     rakeLeaves("Rake leaves"),
     maintain_Paths("Maintain paths");
 	
+	
 	private final String desiredTask;
 	
 	/**
