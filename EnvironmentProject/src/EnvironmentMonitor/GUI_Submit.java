@@ -24,7 +24,7 @@ public class GUI_Submit implements IsDialog {
 	public static void dialog() {
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.setTitle("");
+		stage.setTitle("Log your work");
 		stage.setMinWidth(0);
 		
 
@@ -35,7 +35,7 @@ public class GUI_Submit implements IsDialog {
 				new PropertyValueFactory<Job, String>("jobName"));
 
 		TableColumn<Job, String> colRemove = 
-				new TableColumn<Job, String>("Remove jobs?");
+				new TableColumn<Job, String>("Job Name");
 		Callback<TableColumn<Job, String>, TableCell<Job, String>> cellFactory = new Callback<TableColumn<Job, String>, TableCell<Job, String>>() {
 			public TableCell<Job, String> call(TableColumn<Job, String> param) {
 				final TableCell<Job, String> cell = new TableCell<Job, String>() {
@@ -60,7 +60,7 @@ public class GUI_Submit implements IsDialog {
 		
 		colRemove.setCellFactory(cellFactory);
 		
-		userjobView.getColumns().setAll(colDesc, colRemove);
+		userjobView.getColumns().setAll(colRemove, colDesc);
 		
 		
 		VBox pane = new VBox(20);
