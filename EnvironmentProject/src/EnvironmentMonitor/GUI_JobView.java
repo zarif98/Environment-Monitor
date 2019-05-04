@@ -110,7 +110,7 @@ public class GUI_JobView implements isDialog{
 						} else {
 							Job currentJob = getTableView().getItems().get(getIndex());
 							button.setOnAction(e-> {
-								for() {
+								for(int i= 0;i<environment.getJobNum();i++) {
 									
 								}
 							});
