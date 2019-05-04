@@ -29,7 +29,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class GUI_EnvironmentView implements isDialog{
+public class GUI_EnvironmentView implements IsDialog{
 	/**
 	 * Code for dialog in which 
 	 */

@@ -30,7 +30,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class GUI_JobView implements isDialog{
+public class GUI_JobView implements IsDialog{
 	/**
 	 * Code for dialog in which 
 	 */

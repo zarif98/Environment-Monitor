@@ -30,7 +30,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class GUI_EnvironmentAddView implements isDialog{
+public class GUI_EnvironmentAddView implements IsDialog{
 	static TableView<Environment> envView = new TableView<Environment>(); 
 	public static void dialog() {
 		envView.getItems().clear();
@@ -96,7 +96,7 @@ public class GUI_EnvironmentAddView implements isDialog{
 
 		colJobs.setCellFactory(cellFactoryJobs);
 		
-		Label label = new Label("Can't find your registered environment you're looking for? Make one!");
+		Label label = new Label("Would you like to add an additional environment? Click here!");
 		Button newenvironment = new Button("Add Environment");
 		newenvironment.setOnAction(e -> {
 			GUI_MakeEnvironment.dialog(GUI_Main.environments);
@@ -167,8 +167,8 @@ public class GUI_EnvironmentAddView implements isDialog{
 		removeJobs.setAlignment(Pos.CENTER);
 		registration.setMaxWidth(Double.MAX_VALUE);
 		registration.setAlignment(Pos.BOTTOM_CENTER);
-
-		StackPane.setAlignment(removeJobs, Pos.CENTER);
+		comp.setAlignment(Pos.CENTER);
+		comp.setPadding(new Insets(20,20,20,20));
 
 		removeJobs.setOnAction(e-> {
 			GUI_Main.environments.remove(environment);
@@ -183,6 +183,7 @@ public class GUI_EnvironmentAddView implements isDialog{
 
 		Scene stageScene = new Scene(comp,400, 100);
 		newStage.setScene(stageScene);
+		newStage.setTitle("Removal Confirmation");
 		newStage.show();
 	}
 }

@@ -4,7 +4,9 @@ public enum DesiredTask {
 	pickUpTrash("Pick up trash"),
     workWithAnimals("Work with animals"),
     rakeLeaves("Rake leaves"),
-    maintain_Paths("Maintain paths");
+    maintain_Paths("Maintain paths"),
+	countAnimal("Count animal"),
+	countPlant("Count plant");
 	
 	private final String desiredTask;
 	

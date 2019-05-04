@@ -13,7 +13,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class GUI_Submit implements isDialog {
+
+public class GUI_Submit implements IsDialog {
 	
 	static TableView<Job> userjobView = new TableView<Job>();
 

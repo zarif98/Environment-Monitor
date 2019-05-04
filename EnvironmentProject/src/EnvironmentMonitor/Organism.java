@@ -6,18 +6,59 @@ public abstract class Organism {
 	
 	protected LocalDate lastCounted;
 	protected int amount;
-	protected String speciesName;
+	protected Species species;
 	
-	public Organism(LocalDate lastCounted, int amount, String speciesName) {
-		lastCounted = lastCounted.now();
-		this.speciesName = speciesName;
+	/**
+	 * Constructor for organism
+	 * @param lastCounted
+	 * @param amount
+	 * @param speciesName
+	 */
+	public Organism(LocalDate lastCounted, int amount, Species species) {
+		lastCounted = LocalDate.now();
+		this.species = species;
 		this.amount = amount;
 	}
-	public abstract Integer getlastCounted();
-	public abstract String getspeciesName();
 	
+	/**
+	 * Getter for amount
+	 * @return amount
+	 */
+	public int getAmount() {
+		return amount;
+	}
+	
+	/**
+	 * Getter for lastCounted
+	 * @return lastCounted
+	 */
+	public LocalDate getLastCounted() {
+		return lastCounted;
+	}
+	
+	/**
+	 * Getter for species
+	 * @return speciesName
+	 */
+	public Species getSpecies() {
+		return species;
+	}
+	
+	/**
+	 * Generates string for 
+	 */
 	public String toString() {
-		return amount + " " +speciesName + " were spotted at" + lastCounted.toString()  ;
+		return amount + " " + (amount==1?(species.getSingular() + " was"):(species.getPlural() + " were")) + 
+				" spotted at " + lastCounted.toString();
+	}
+	
+	/**
+	 * Setter for amount, also sets the last counted date to now
+	 * @param count
+	 */
+	public void recount(int count) {
+		amount = count;
+		lastCounted = LocalDate.now();
 	}
 
 }

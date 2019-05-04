@@ -15,7 +15,7 @@ import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
-public class GUI_MakeEnvironment implements isDialog {
+public class GUI_MakeEnvironment implements IsDialog {
 
 	/**
 	 * Code for dialog in which 
@@ -103,6 +103,7 @@ public class GUI_MakeEnvironment implements isDialog {
 		VBox comp = new VBox();
 		Label registration = new Label("Would you like to add Jobs to your registered environment?");
 		Button addJobs = new Button("Add Jobs");
+		comp.setAlignment(Pos.CENTER);
 		addJobs.setAlignment(Pos.CENTER_RIGHT);
 		registration.setMaxWidth(Double.MAX_VALUE);
 		registration.setAlignment(Pos.BOTTOM_CENTER);
