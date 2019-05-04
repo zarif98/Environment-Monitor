@@ -103,6 +103,7 @@ public class GUI_MakeEnvironment implements IsDialog {
 		VBox comp = new VBox();
 		Label registration = new Label("Would you like to add Jobs to your registered environment?");
 		Button addJobs = new Button("Add Jobs");
+		comp.setAlignment(Pos.CENTER);
 		addJobs.setAlignment(Pos.CENTER_RIGHT);
 		registration.setMaxWidth(Double.MAX_VALUE);
 		registration.setAlignment(Pos.BOTTOM_CENTER);

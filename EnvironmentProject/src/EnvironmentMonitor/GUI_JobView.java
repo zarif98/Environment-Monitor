@@ -41,7 +41,7 @@ public class GUI_JobView implements IsDialog{
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("Showing all jobs for selected Job");
-		stage.setMinWidth(700);
+		stage.setMinWidth(680);
 
 
 		jobView.getItems().clear();
@@ -97,25 +97,25 @@ public class GUI_JobView implements IsDialog{
 		
 		
 		
-		TableColumn<Environment, String> colGetThisJob = 
-				new TableColumn<Environment, String>("Get this job");
-		Callback<TableColumn<Environment, String>, TableCell<Environment, String>> cellFactoryGetJobs = new Callback<TableColumn<Environment, String>, TableCell<Environment, String>>() {
-			public TableCell<Environment, String> call(TableColumn<Environment, String> param) {
-				final TableCell<Environment, String> cell = new TableCell<Environment, String>() {
+		TableColumn<Job, String> colGetThisJob = 
+				new TableColumn<Job, String>("Get this job");
+		Callback<TableColumn<Job, String>, TableCell<Job, String>> cellFactoryGetJobs = new Callback<TableColumn<Job, String>, TableCell<Job, String>>() {
+			public TableCell<Job, String> call(TableColumn<Job, String> param) {
+				final TableCell<Job, String> cell = new TableCell<Job, String>() {
 					private final Button button = new Button();
 
 					public void updateItem(String crn, boolean empty) {
 						if(empty) {
 							setGraphic(null);
 						} else {
-							Environment currentEnvironment = getTableView().getItems().get(getIndex());
-							for(Object env : GUI_Main.environments.getList()) {
-								if (env.equals(currentEnvironment)) {
+							Job currentJob = getTableView().getItems().get(getIndex());
+							button.setOnAction(e-> {
+								for(int i= 0;i<environment.getJobNum();i++) {
 									
 								}
-							}
+							});
 						
-							button.setText("View");
+							button.setText("Get!");
 							button.setAlignment(Pos.BASELINE_CENTER);
 							button.setMaxWidth(Double.MAX_VALUE);
 							setGraphic(button);
@@ -130,7 +130,7 @@ public class GUI_JobView implements IsDialog{
 
 
 
-		jobView.getColumns().setAll(colName, colDesc, colTask, colRemove);
+		jobView.getColumns().setAll(colName, colDesc, colTask, colRemove, colGetThisJob);
 
 		for(Job j: environment.getJobs()) {
 			jobView.getItems().add(j);

@@ -37,7 +37,7 @@ public class GUI_EnvironmentAddView implements IsDialog{
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("Make New Job");
-		stage.setMinWidth(550);
+		stage.setMinWidth(620);
 
 
 		TableColumn<Environment, String> colName =
@@ -96,7 +96,7 @@ public class GUI_EnvironmentAddView implements IsDialog{
 
 		colJobs.setCellFactory(cellFactoryJobs);
 		
-		Label label = new Label("Can't find your registered environment you're looking for? Make one!");
+		Label label = new Label("Would you like to add an additional environment? Click here!");
 		Button newenvironment = new Button("Add Environment");
 		newenvironment.setOnAction(e -> {
 			GUI_MakeEnvironment.dialog(GUI_Main.environments);
@@ -107,7 +107,7 @@ public class GUI_EnvironmentAddView implements IsDialog{
 		});
 		
 		TableColumn<Environment, String> colRemove = 
-				new TableColumn<Environment, String>("Remove environments?");
+				new TableColumn<Environment, String>("Remove Environments");
 		Callback<TableColumn<Environment, String>, TableCell<Environment, String>> cellFactory = new Callback<TableColumn<Environment, String>, TableCell<Environment, String>>() {
 			public TableCell<Environment, String> call(TableColumn<Environment, String> param) {
 				final TableCell<Environment, String> cell = new TableCell<Environment, String>() {
@@ -162,15 +162,15 @@ public class GUI_EnvironmentAddView implements IsDialog{
 
 		Stage newStage = new Stage();
 		VBox comp = new VBox();
-		Label registration = new Label("Are you sure you would like to remove this job?");
-		Button addJobs = new Button("Remove");
-		addJobs.setAlignment(Pos.CENTER_RIGHT);
+		Label registration = new Label("Are you sure you would like to remove this environment?");
+		Button removeJobs = new Button("Remove");
+		removeJobs.setAlignment(Pos.CENTER);
 		registration.setMaxWidth(Double.MAX_VALUE);
 		registration.setAlignment(Pos.BOTTOM_CENTER);
+		comp.setAlignment(Pos.CENTER);
+		comp.setPadding(new Insets(20,20,20,20));
 
-		StackPane.setAlignment(addJobs, Pos.CENTER_LEFT);
-
-		addJobs.setOnAction(e-> {
+		removeJobs.setOnAction(e-> {
 			GUI_Main.environments.remove(environment);
 			envView.getItems().clear();
 			for(Object env: GUI_Main.environments.getList()) {
@@ -179,10 +179,11 @@ public class GUI_EnvironmentAddView implements IsDialog{
 		});
 
 
-		comp.getChildren().addAll(registration, addJobs);
+		comp.getChildren().addAll(registration, removeJobs);
 
 		Scene stageScene = new Scene(comp,400, 100);
 		newStage.setScene(stageScene);
+		newStage.setTitle("Removal Confirmation");
 		newStage.show();
 	}
 }
