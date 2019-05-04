@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class GUI_Main extends Application{
@@ -155,6 +156,7 @@ public class GUI_Main extends Application{
 		primaryStage.setScene(scene);
 		scene.getStylesheets().add(getClass().getResource("EnvironmentDesign.css").toExternalForm());
 		primaryStage.setTitle("Environment Monitor");
+		Font.loadFont("Montserrat", 10);
 		primaryStage.show();
 	}
 }
