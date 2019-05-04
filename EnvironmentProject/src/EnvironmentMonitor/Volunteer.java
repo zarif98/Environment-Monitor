@@ -125,4 +125,12 @@ public class Volunteer implements Serializable {
 		return jobs.remove(job);
 	}
 	
+	/**
+	 * Getter for jobs
+	 * @return jobs
+	 */
+	public HashSet<Job> getJobs(){
+		return jobs;
+	}
+	
 }
