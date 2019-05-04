@@ -71,10 +71,6 @@ public class GUI_MakeJob {
 			}
 		});
 
-		Button add = new Button("Add");
-		add.setOnAction(e->{
-			GUI_MakeJob.dialog(environment);
-		});
 
 
 		VBox pane = new VBox(20);

@@ -101,9 +101,15 @@ public class GUI_JobView implements isDialog{
 		for(Job j: environment.getJobs()) {
 			jobView.getItems().add(j);
 		}
+		Label job = new Label("Want to add a job? Add it!");
+		
+		Button add = new Button("Add");
+		add.setOnAction(e->{
+			GUI_MakeJob.dialog(environment);
+		});
 
 		VBox pane = new VBox(20);
-		pane.getChildren().addAll(jobView);
+		pane.getChildren().addAll(jobView,job, add);
 		pane.setAlignment(Pos.CENTER);
 		pane.setStyle("-fx-background-color: AntiqueWhite;");
 		pane.setPadding(new Insets(20,20,20,20));
