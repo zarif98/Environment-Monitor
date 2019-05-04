@@ -122,8 +122,8 @@ public class GUI_Main extends Application{
 		if(volunteer.isAdmin()) {
 			//create controls to interact with (admins only)
 			Button makeEnvironment = new Button();
-			makeEnvironment.setText("Make Environment");
-			makeEnvironment.setOnAction(e -> GUI_MakeEnvironment.dialog(environments));
+			makeEnvironment.setText("View/Make Environment");
+			makeEnvironment.setOnAction(e -> GUI_EnvironmentAddView.dialog());
 
 			Button makeJob = new Button();
 			makeJob.setText("Make Job");
