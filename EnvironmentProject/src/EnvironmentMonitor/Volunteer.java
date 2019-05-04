@@ -8,6 +8,7 @@ public class Volunteer implements Serializable {
 	private String password;
 	private HashSet<DesiredTask> desiredTasks;
 	private boolean isAdmin;
+	private HashSet<Job> jobs;
 	
 	/**
 	 * Constructor for Volunteer given only username
@@ -29,6 +30,7 @@ public class Volunteer implements Serializable {
 		this.username = username;
 		this.password = password;
 		this.desiredTasks = new HashSet<DesiredTask>();
+		this.jobs = new HashSet<Job>();
 		this.isAdmin = isAdmin;
 	}
 	
@@ -103,6 +105,24 @@ public class Volunteer implements Serializable {
 	 */
 	public void setAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
+	}
+	
+	/**
+	 * Add a job to the job list
+	 * @param job
+	 * @return true if successful
+	 */
+	public boolean addJob(Job job) {
+		return jobs.add(job);
+	}
+	
+	/**
+	 * Remove a job from the job list
+	 * @param job
+	 * @return true if successful
+	 */
+	public boolean removeJob(Job job) {
+		return jobs.remove(job);
 	}
 	
 }
