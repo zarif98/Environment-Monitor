@@ -79,6 +79,7 @@ public class GUI_FindJobs implements isDialog {
 
 		colJobs.setCellFactory(cellFactoryJobs);
 		
+		
 		jobView.getColumns().setAll(colName, colDistanceTo, numJobs, colJobs);
 		
 		for(Object e : GUI_Main.environments.getList()){

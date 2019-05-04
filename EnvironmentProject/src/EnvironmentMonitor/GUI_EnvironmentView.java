@@ -69,35 +69,35 @@ public class GUI_EnvironmentView implements isDialog{
 
 
 
-		TableColumn<Environment, String> colAdd = 
-				new TableColumn<Environment, String>("Add Jobs!");
-		Callback<TableColumn<Environment, String>, TableCell<Environment, String>> cellFactory = new Callback<TableColumn<Environment, String>, TableCell<Environment, String>>() {
-			public TableCell<Environment, String> call(TableColumn<Environment, String> param) {
-				final TableCell<Environment, String> cell = new TableCell<Environment, String>() {
-					private final Button button = new Button();
-
-					public void updateItem(String crn, boolean empty) {
-						if(empty) {
-							setGraphic(null);
-						} else {
-							Environment currentEnvironment = getTableView().getItems().get(getIndex());
-							for(Object env : GUI_Main.environments.getList()) {
-								if (env.equals(currentEnvironment)) {
-									button.setOnAction( e-> GUI_MakeJob.dialog((Environment) env));
-								}
-							}		
-							button.setText("Add");
-							button.setAlignment(Pos.BASELINE_CENTER);
-							button.setMaxWidth(Double.MAX_VALUE);
-							setGraphic(button);
-						}
-					}
-				};
-				return cell;
-			}
-		};
-
-		colAdd.setCellFactory(cellFactory);
+//		TableColumn<Environment, String> colAdd = 
+//				new TableColumn<Environment, String>("Add Jobs!");
+//		Callback<TableColumn<Environment, String>, TableCell<Environment, String>> cellFactory = new Callback<TableColumn<Environment, String>, TableCell<Environment, String>>() {
+//			public TableCell<Environment, String> call(TableColumn<Environment, String> param) {
+//				final TableCell<Environment, String> cell = new TableCell<Environment, String>() {
+//					private final Button button = new Button();
+//
+//					public void updateItem(String crn, boolean empty) {
+//						if(empty) {
+//							setGraphic(null);
+//						} else {
+//							Environment currentEnvironment = getTableView().getItems().get(getIndex());
+//							for(Object env : GUI_Main.environments.getList()) {
+//								if (env.equals(currentEnvironment)) {
+//									button.setOnAction( e-> GUI_MakeJob.dialog((Environment) env));
+//								}
+//							}		
+//							button.setText("Add");
+//							button.setAlignment(Pos.BASELINE_CENTER);
+//							button.setMaxWidth(Double.MAX_VALUE);
+//							setGraphic(button);
+//						}
+//					}
+//				};
+//				return cell;
+//			}
+//		};
+//
+//		colAdd.setCellFactory(cellFactory);
 		
 		TableColumn<Environment, String> colJobs = 
 				new TableColumn<Environment, String>("View Jobs!");
@@ -130,6 +130,8 @@ public class GUI_EnvironmentView implements isDialog{
 
 		colJobs.setCellFactory(cellFactoryJobs);
 		
+
+		
 		Label label = new Label("Can't find your registered environment you're looking for? Make one!");
 		Button newenvironment = new Button("Add Environment");
 		newenvironment.setOnAction(e -> {
@@ -141,7 +143,7 @@ public class GUI_EnvironmentView implements isDialog{
 		});
 
 
-		EnvironmentView.getColumns().setAll(colName, colLong, colLat, colDistanceTo, colJobs, colAdd);
+		EnvironmentView.getColumns().setAll(colName, colLong, colLat, colDistanceTo, colJobs);
 
 
 		for(Object e : GUI_Main.environments.getList()){
