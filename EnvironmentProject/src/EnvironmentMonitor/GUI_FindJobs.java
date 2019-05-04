@@ -52,8 +52,13 @@ public class GUI_FindJobs implements isDialog {
 			jobView.getItems().add((Environment) e);
 		}
 		
+		Button add = new Button("Add Job");
+		add.setOnAction(e-> {
+								GUI_MakeJob.dialog(GUI_Main.environments);
+							});
+		
 		VBox pane = new VBox(20);
-		pane.getChildren().addAll(jobView);
+		pane.getChildren().addAll(jobView, add);
 		pane.setAlignment(Pos.CENTER);
 		pane.setStyle("-fx-background-color: AntiqueWhite;");
 		pane.setPadding(new Insets(20,20,20,20));
