@@ -31,9 +31,19 @@ public class Job implements Serializable {
 	public String getJobName() {
 		return this.name;
 	}
+	
+	/**
+	 * Getter for description
+	 * @return jobDescription
+	 */
 	public String getJobDescription() {
 		return jobDescription;
 	}
+	
+	/**
+	 * Getter for desired task
+	 * @return desiredTask's toString
+	 */
 	public String getDesiredTask() {
 		return desiredTask.toString();
 	}
