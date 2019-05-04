@@ -33,6 +33,7 @@ import javafx.util.Callback;
 public class GUI_EnvironmentAddView implements isDialog{
 	static TableView<Environment> envView = new TableView<Environment>(); 
 	public static void dialog() {
+		envView.getItems().clear();
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("Make New Job");
