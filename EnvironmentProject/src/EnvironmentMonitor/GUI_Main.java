@@ -64,7 +64,7 @@ public class GUI_Main extends Application{
 		loginButton.setOnMouseClicked(e -> {
 			Volunteer user = users.getUser(usernameInput.getText(), passwordInput.getText());
 			if(user != null) {
-				setupLoggedIn(mainPane, user);
+				setupLoggedIn(mainPane, users.getUser(usernameInput.getText(), passwordInput.getText()));
 			}
 			else {
 				System.err.println("Invalid Username/Password");
@@ -99,7 +99,7 @@ public class GUI_Main extends Application{
 		Button findJobs = new Button();
 		findJobs.setText("Find Volunteering");
 
-		findJobs.setOnAction(e -> GUI_FindJobs.dialog());
+		findJobs.setOnAction(e -> GUI_FindJobs.dialog(volunteer));
 
 		Button submitWork = new Button();
 		submitWork.setText("Submit Work");

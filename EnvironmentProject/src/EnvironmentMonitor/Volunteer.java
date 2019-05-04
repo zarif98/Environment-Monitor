@@ -3,6 +3,7 @@ package EnvironmentMonitor;
 import java.io.Serializable;
 import java.util.HashSet;
 
+
 public class Volunteer implements Serializable {
 	private String username;
 	private String password;
@@ -131,6 +132,20 @@ public class Volunteer implements Serializable {
 	 */
 	public HashSet<Job> getJobs(){
 		return jobs;
+	}
+
+	public String getCurrentJobsString() {
+		String jobString = "Jobs: ";
+			for (Job j: jobs) {
+				jobString += j.getJobName() + "(" + j.getDesiredTask() +"), ";
+			}
+			
+			if (jobString != "Jobs: ") {
+				jobString = jobString.substring(0, jobString.length()-2);
+			}
+			
+		return jobString;
+		
 	}
 	
 }
