@@ -39,7 +39,7 @@ public class GUI_JobView implements isDialog{
 	public static void dialog(Environment environment) {
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.setTitle("Showing all jobs for selected environment");
+		stage.setTitle("Showing all jobs for selected Job");
 		stage.setMinWidth(700);
 
 
@@ -76,8 +76,7 @@ public class GUI_JobView implements isDialog{
 						} else {
 							Job currentJob = getTableView().getItems().get(getIndex());
 							button.setOnAction( e-> {
-								showStage(currentJob, environment);
-								
+								showStage(currentJob, environment);	
 							}
 									);
 							button.setText("Remove");
