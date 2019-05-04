@@ -25,6 +25,7 @@ public class GUI_FindJobs implements isDialog {
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("");
 		stage.setMinWidth(0);
+		stage.setWidth(500);
 		
 		TableView<Environment> jobView = new TableView<Environment>(); 
 
