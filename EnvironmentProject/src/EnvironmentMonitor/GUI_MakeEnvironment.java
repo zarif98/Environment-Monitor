@@ -50,7 +50,7 @@ public class GUI_MakeEnvironment implements IsDialog {
 		popup.setY(200);
 		
 		Button submit = new Button("Submit");
-		
+		//
 		submit.setOnAction(e -> {
 			if(landEnvironmentBox.isSelected() && waterEnvironmentBox.isSelected()) {
 				WaterAndLandEnvironment waterAndLandEnvironment = new WaterAndLandEnvironment
