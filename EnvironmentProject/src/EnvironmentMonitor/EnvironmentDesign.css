@@ -2,3 +2,11 @@
 	-fx-background-color: #A1B56C;
 	-fx-font-size: 11;
 }
+@font-face {
+    font-family: Montserrat;
+    src: url('Mont.ttf');
+}
+
+.text {
+    -fx-font-family: "Montserrat";
+}
