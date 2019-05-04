@@ -51,5 +51,14 @@ public abstract class Organism {
 		return amount + " " + (amount==1?(species.getSingular() + " was"):(species.getPlural() + " were")) + 
 				" spotted at " + lastCounted.toString();
 	}
+	
+	/**
+	 * Setter for amount, also sets the last counted date to now
+	 * @param count
+	 */
+	public void recount(int count) {
+		amount = count;
+		lastCounted = LocalDate.now();
+	}
 
 }
