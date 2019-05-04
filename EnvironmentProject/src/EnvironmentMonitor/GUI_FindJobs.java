@@ -48,7 +48,7 @@ public class GUI_FindJobs implements isDialog {
 		
 		jobView.getColumns().setAll(colName, colDistanceTo, findJob);
 		
-		for(Object e : GUI_Main.jobs.getList()){
+		for(Object e : GUI_Main.environments.getList()){
 			jobView.getItems().add((Environment) e);
 		}
 		

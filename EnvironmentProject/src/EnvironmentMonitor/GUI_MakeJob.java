@@ -26,7 +26,7 @@ public class GUI_MakeJob {
 	public static void dialog(Environment environment) {
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.setTitle("Make New Environment");
+		stage.setTitle("Make New Job");
 		stage.setMinWidth(500);
 				
 				
@@ -66,6 +66,7 @@ public class GUI_MakeJob {
 			}
 			else {
 				environment.addJob(new Job(jobNameInput.getText(), descriptionInput.getText(), dt));
+				GUI_Main.environments.serialize();
 				stage.close();
 			}
 		});

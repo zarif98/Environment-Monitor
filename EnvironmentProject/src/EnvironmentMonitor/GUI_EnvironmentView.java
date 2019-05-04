@@ -33,10 +33,10 @@ public class GUI_EnvironmentView implements isDialog{
 	/**
 	 * Code for dialog in which 
 	 */
-	public static void dialog(JobList jobs) {
+	public static void dialog() {
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.setTitle("Make New Environment");
+		stage.setTitle("Make New Job");
 		stage.setMinWidth(550);
 
 		TableView<Environment> EnvironmentView = new TableView<Environment>(); 
@@ -44,15 +44,21 @@ public class GUI_EnvironmentView implements isDialog{
 
 		TableColumn<Environment, String> colName =
 				new TableColumn<Environment, String>("Environment Name");
-		colName.setMinWidth(180);
+		colName.setMinWidth(100);
 		colName.setCellValueFactory(
 				new PropertyValueFactory<Environment, String>("environmentName"));
 		
-		TableColumn<Environment, String> findJob =
-				new TableColumn<Environment, String>("Jobs");
-		findJob.setMinWidth(80);
-		findJob.setCellValueFactory(
-				new PropertyValueFactory<Environment, String>("Jobs"));
+		TableColumn<Environment, String> colLong =
+				new TableColumn<Environment, String>("Longitude");
+		colLong.setMinWidth(80);
+		colLong.setCellValueFactory(
+				new PropertyValueFactory<Environment, String>("longitude"));
+		
+		TableColumn<Environment, String> colLat =
+				new TableColumn<Environment, String>("Latitude");
+		colLat.setMinWidth(80);
+		colLat.setCellValueFactory(
+				new PropertyValueFactory<Environment, String>("latitude"));
 
 
 		TableColumn<Environment, Double> colDistanceTo = 
@@ -75,10 +81,11 @@ public class GUI_EnvironmentView implements isDialog{
 							setGraphic(null);
 						} else {
 							Environment currentEnvironment = getTableView().getItems().get(getIndex());
-							button.setOnAction( e-> {
-								GUI_MakeJob.dialog(currentEnvironment);
-							}
-									);
+							for(Object env : GUI_Main.environments.getList()) {
+								if (env.equals(currentEnvironment)) {
+									button.setOnAction( e-> GUI_MakeJob.dialog((Environment) env));
+								}
+							}		
 							button.setText("Add");
 							button.setAlignment(Pos.BASELINE_CENTER);
 							button.setMaxWidth(Double.MAX_VALUE);
@@ -104,10 +111,12 @@ public class GUI_EnvironmentView implements isDialog{
 							setGraphic(null);
 						} else {
 							Environment currentEnvironment = getTableView().getItems().get(getIndex());
-							button.setOnAction( e-> {
-								GUI_JobView.dialog(currentEnvironment);
+							for(Object env : GUI_Main.environments.getList()) {
+								if (env.equals(currentEnvironment)) {
+									button.setOnAction( e-> GUI_JobView.dialog((Environment) env));
+								}
 							}
-									);
+						
 							button.setText("View");
 							button.setAlignment(Pos.BASELINE_CENTER);
 							button.setMaxWidth(Double.MAX_VALUE);
@@ -123,12 +132,20 @@ public class GUI_EnvironmentView implements isDialog{
 		
 		Label label = new Label("Can't find your registered environment you're looking for? Make one!");
 		Button newenvironment = new Button("Add Environment");
-		newenvironment.setOnAction(e -> GUI_MakeEnvironment.dialog(GUI_Main.environments));
+		newenvironment.setOnAction(e -> {
+			GUI_MakeEnvironment.dialog(GUI_Main.environments);
+			EnvironmentView.getItems().clear();
+			for(Object env : GUI_Main.environments.getList()){
+				EnvironmentView.getItems().add((Environment) env);
+			}
+		});
+
 
 
 
 
 		EnvironmentView.getColumns().setAll(colName, colDistanceTo, colJobs);
+
 
 		for(Object e : GUI_Main.environments.getList()){
 			EnvironmentView.getItems().add((Environment) e);
