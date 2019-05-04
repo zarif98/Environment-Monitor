@@ -30,14 +30,14 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class GUI_JobView implements IsDialog{
+public class GUI_JobAddView implements IsDialog{
 	/**
 	 * Code for dialog in which 
 	 */
 	static TableView<Job> jobView = new TableView<Job>();
 	
 	
-	public static void dialog(Environment environment, Volunteer volunteer) {
+	public static void dialog(Environment environment) {
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("Showing all jobs for selected Job");
@@ -63,7 +63,39 @@ public class GUI_JobView implements IsDialog{
 		colTask.setMinWidth(80);
 		colTask.setCellValueFactory(
 				new PropertyValueFactory<Job, String>("desiredTask"));
-				
+		
+		TableColumn<Job, String> colRemove = 
+				new TableColumn<Job, String>("Remove jobs?");
+		Callback<TableColumn<Job, String>, TableCell<Job, String>> cellFactory = new Callback<TableColumn<Job, String>, TableCell<Job, String>>() {
+			public TableCell<Job, String> call(TableColumn<Job, String> param) {
+				final TableCell<Job, String> cell = new TableCell<Job, String>() {
+					private final Button button = new Button();
+
+					public void updateItem(String crn, boolean empty) {
+						if(empty) {
+							setGraphic(null);
+						} else {
+							Job currentJob = getTableView().getItems().get(getIndex());
+							button.setOnAction( e-> {
+								showStage(currentJob, environment);	
+							}
+									);
+							button.setText("Remove");
+							button.setAlignment(Pos.BASELINE_CENTER);
+							button.setMaxWidth(Double.MAX_VALUE);
+							setGraphic(button);
+						}
+					}
+				};
+				return cell;
+			}
+		};
+		
+		
+
+		colRemove.setCellFactory(cellFactory);
+		
+		
 		
 		TableColumn<Job, String> colGetThisJob = 
 				new TableColumn<Job, String>("Get this job");
@@ -77,15 +109,11 @@ public class GUI_JobView implements IsDialog{
 							setGraphic(null);
 						} else {
 							Job currentJob = getTableView().getItems().get(getIndex());
-							for(Object o : environment.getJobs())
-							{
-								if (o == currentJob) {
-									button.setOnAction(e-> {
-										volunteer.addJob((Job)o);
-										GUI_FindJobs.jobsLabel.setText(volunteer.getCurrentJobsString());
-									});
+							button.setOnAction(e-> {
+								for(int i= 0;i<environment.getJobNum();i++) {
+									
 								}
-							}
+							});
 						
 							button.setText("Get!");
 							button.setAlignment(Pos.BASELINE_CENTER);
@@ -102,14 +130,22 @@ public class GUI_JobView implements IsDialog{
 
 
 
-		jobView.getColumns().setAll(colName, colDesc, colTask, colGetThisJob);
+		jobView.getColumns().setAll(colName, colDesc, colTask, colRemove, colGetThisJob);
 
 		for(Job j: environment.getJobs()) {
 			jobView.getItems().add(j);
 		}
+		Label job = new Label("Want to add a job? Add it!");
+		
+		Button add = new Button("Add");
+		add.setOnAction(e->{
+			GUI_MakeJob.dialog(environment);
+		});
+		
+		Button addJobs = new Button("Remove");
 
 		VBox pane = new VBox(20);
-		pane.getChildren().addAll(jobView);
+		pane.getChildren().addAll(jobView,job, add);
 		pane.setAlignment(Pos.CENTER);
 		pane.setStyle("-fx-background-color: AntiqueWhite;");
 		pane.setPadding(new Insets(20,20,20,20));

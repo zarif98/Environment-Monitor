@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -20,13 +21,18 @@ public class GUI_FindJobs implements IsDialog {
 	/**
 	 * Code for dialog in which 
 	 */
-	public static void dialog() {
+	
+	static Label jobsLabel = new Label();
+	public static void dialog(Volunteer volunteer) {
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("");
 		stage.setMinWidth(0);
 		stage.setWidth(500);
 		
+		
+		
+		jobsLabel.setText(volunteer.getCurrentJobsString());
 		TableView<Environment> jobView = new TableView<Environment>(); 
 
 
@@ -63,7 +69,8 @@ public class GUI_FindJobs implements IsDialog {
 							Environment currentEnvironment = getTableView().getItems().get(getIndex());
 							for(Object env : GUI_Main.environments.getList()) {
 								if (env.equals(currentEnvironment)) {
-									button.setOnAction( e-> GUI_JobView.dialog((Environment) env));
+									button.setOnAction( e-> GUI_JobView.dialog((Environment) env, volunteer));
+									jobsLabel.setText(volunteer.getCurrentJobsString());
 								}
 							}
 						
@@ -121,7 +128,7 @@ public class GUI_FindJobs implements IsDialog {
 
 		
 		VBox pane = new VBox(20);
-		pane.getChildren().addAll(jobView);
+		pane.getChildren().addAll(jobView, jobsLabel);
 		pane.setAlignment(Pos.CENTER);
 		pane.setStyle("-fx-background-color: AntiqueWhite;");
 		pane.setPadding(new Insets(20,20,20,20));
