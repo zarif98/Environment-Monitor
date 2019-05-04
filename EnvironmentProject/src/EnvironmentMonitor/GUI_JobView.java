@@ -36,6 +36,7 @@ public class GUI_JobView implements isDialog{
 	 */
 	static TableView<Job> jobView = new TableView<Job>();
 	
+	
 	public static void dialog(Environment environment) {
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
@@ -76,8 +77,7 @@ public class GUI_JobView implements isDialog{
 						} else {
 							Job currentJob = getTableView().getItems().get(getIndex());
 							button.setOnAction( e-> {
-								showStage(currentJob, environment);
-								
+								showStage(currentJob, environment);	
 							}
 									);
 							button.setText("Remove");
@@ -94,6 +94,39 @@ public class GUI_JobView implements isDialog{
 		
 
 		colRemove.setCellFactory(cellFactory);
+		
+		
+		
+		TableColumn<Environment, String> colGetThisJob = 
+				new TableColumn<Environment, String>("Get this job");
+		Callback<TableColumn<Environment, String>, TableCell<Environment, String>> cellFactoryGetJobs = new Callback<TableColumn<Environment, String>, TableCell<Environment, String>>() {
+			public TableCell<Environment, String> call(TableColumn<Environment, String> param) {
+				final TableCell<Environment, String> cell = new TableCell<Environment, String>() {
+					private final Button button = new Button();
+
+					public void updateItem(String crn, boolean empty) {
+						if(empty) {
+							setGraphic(null);
+						} else {
+							Environment currentEnvironment = getTableView().getItems().get(getIndex());
+							for(Object env : GUI_Main.environments.getList()) {
+								if (env.equals(currentEnvironment)) {
+									
+								}
+							}
+						
+							button.setText("View");
+							button.setAlignment(Pos.BASELINE_CENTER);
+							button.setMaxWidth(Double.MAX_VALUE);
+							setGraphic(button);
+						}
+					}
+				};
+				return cell;
+			}
+		};
+		
+		colGetThisJob.setCellFactory(cellFactoryGetJobs);
 
 
 
@@ -102,9 +135,17 @@ public class GUI_JobView implements isDialog{
 		for(Job j: environment.getJobs()) {
 			jobView.getItems().add(j);
 		}
+		Label job = new Label("Want to add a job? Add it!");
+		
+		Button add = new Button("Add");
+		add.setOnAction(e->{
+			GUI_MakeJob.dialog(environment);
+		});
+		
+		Button addJobs = new Button("Remove");
 
 		VBox pane = new VBox(20);
-		pane.getChildren().addAll(jobView);
+		pane.getChildren().addAll(jobView,job, add);
 		pane.setAlignment(Pos.CENTER);
 		pane.setStyle("-fx-background-color: AntiqueWhite;");
 		pane.setPadding(new Insets(20,20,20,20));

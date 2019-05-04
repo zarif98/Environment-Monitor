@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Job implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3701713934753996265L;
 	private String name;
 	private String jobDescription;
 	private DesiredTask desiredTask;

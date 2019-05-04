@@ -6,7 +6,6 @@ public enum DesiredTask {
     rakeLeaves("Rake leaves"),
     maintain_Paths("Maintain paths");
 	
-	
 	private final String desiredTask;
 	
 	/**
@@ -17,6 +16,7 @@ public enum DesiredTask {
 		this.desiredTask = desiredTask;
 	}
 	
+
 	public String getDesiredTask() {
 		return this.desiredTask;
 	}
@@ -24,7 +24,6 @@ public enum DesiredTask {
 	/**
 	 * toString, returns desired task
 	 */
-
 	public String toString() {
 		return this.desiredTask;
 	}

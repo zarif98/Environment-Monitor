@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class GUI_Main extends Application{
@@ -121,12 +122,12 @@ public class GUI_Main extends Application{
 		if(volunteer.isAdmin()) {
 			//create controls to interact with (admins only)
 			Button makeEnvironment = new Button();
-			makeEnvironment.setText("Make Environment");
-			makeEnvironment.setOnAction(e -> GUI_MakeEnvironment.dialog(environments));
+			makeEnvironment.setText("View/Make Environment");
+			makeEnvironment.setOnAction(e -> GUI_EnvironmentAddView.dialog());
 
 			Button makeJob = new Button();
 			makeJob.setText("Make Job");
-			makeJob.setOnAction(e -> GUI_EnvironmentView.dialog(jobs));
+			makeJob.setOnAction(e -> GUI_EnvironmentView.dialog());
 
 			//place controls on pane (admins only)
 			mainPane.setLeft(makeEnvironment);
@@ -155,6 +156,7 @@ public class GUI_Main extends Application{
 		primaryStage.setScene(scene);
 		scene.getStylesheets().add(getClass().getResource("EnvironmentDesign.css").toExternalForm());
 		primaryStage.setTitle("Environment Monitor");
+		Font.loadFont("Montserrat", 10);
 		primaryStage.show();
 	}
 }

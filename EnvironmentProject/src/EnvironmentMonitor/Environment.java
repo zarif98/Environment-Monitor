@@ -2,6 +2,7 @@ package EnvironmentMonitor;
 
 import java.util.ArrayList;
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 
 public abstract class Environment implements Serializable{
@@ -69,7 +70,9 @@ public abstract class Environment implements Serializable{
         // each degree on a great circle of Earth is 60 nautical miles
         double nauticalMiles = 60 * Math.toDegrees(angle);
         double statuteMiles = STATUTE_MILES_PER_NAUTICAL_MILE * nauticalMiles;
-        return statuteMiles;
+        
+        DecimalFormat df = new DecimalFormat("#.####");
+        return Double.parseDouble(df.format(statuteMiles));
 	}
 	
 	/**
@@ -95,6 +98,17 @@ public abstract class Environment implements Serializable{
 	 */
 	public ArrayList<Job> getJobs(){
 		return jobs;
+	}
+	public int getJobNum() {
+		return jobs.size();
+	}
+	
+	public double getLongitude() {
+		return longitude;
+	}
+	
+	public double getLatitude() {
+		return latitude;
 	}
 }
 
