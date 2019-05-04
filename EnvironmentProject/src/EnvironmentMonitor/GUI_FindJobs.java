@@ -53,6 +53,7 @@ public class GUI_FindJobs implements isDialog {
 		for(Object e : GUI_Main.environments.getList()){
 			jobView.getItems().add((Environment) e);
 		}
+		//
 		
 		TableColumn<Job, String> colAdd = 
 				new TableColumn<Job, String>("Add Jobs?");
