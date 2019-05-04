@@ -20,7 +20,10 @@ public enum DesiredTask {
 		requiresCounting = hasCounting;
 	}
 	
-
+	/**
+	 * Getter for the task
+	 * @return
+	 */
 	public String getDesiredTask() {
 		return this.desiredTask;
 	}
@@ -30,5 +33,13 @@ public enum DesiredTask {
 	 */
 	public String toString() {
 		return this.desiredTask;
+	}
+	
+	/**
+	 * Getter for requiresCounting
+	 * @return requiresCounting
+	 */
+	public boolean requiresCounting() {
+		return requiresCounting;
 	}
 }
