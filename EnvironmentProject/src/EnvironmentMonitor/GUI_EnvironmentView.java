@@ -37,7 +37,7 @@ public class GUI_EnvironmentView implements isDialog{
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("Make New Job");
-		stage.setMinWidth(550);
+		stage.setMinWidth(600);
 
 		TableView<Environment> EnvironmentView = new TableView<Environment>(); 
 
@@ -141,9 +141,6 @@ public class GUI_EnvironmentView implements isDialog{
 		});
 
 
-
-
-
 		EnvironmentView.getColumns().setAll(colName, colLong, colLat, colDistanceTo, colJobs, colAdd);
 
 
@@ -154,7 +151,7 @@ public class GUI_EnvironmentView implements isDialog{
 		VBox pane = new VBox(20);
 		pane.getChildren().addAll(EnvironmentView, label, newenvironment);
 		pane.setAlignment(Pos.CENTER);
-		pane.setStyle("-fx-background-color: AntiqueWhite;");
+		pane.setStyle("-fx-background-color: #A1B56C;");
 		pane.setPadding(new Insets(20,20,20,20));
 
 		Scene scene = new Scene(pane);

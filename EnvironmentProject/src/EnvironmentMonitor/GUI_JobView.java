@@ -107,6 +107,8 @@ public class GUI_JobView implements isDialog{
 		add.setOnAction(e->{
 			GUI_MakeJob.dialog(environment);
 		});
+		
+		Button addJobs = new Button("Remove");
 
 		VBox pane = new VBox(20);
 		pane.getChildren().addAll(jobView,job, add);

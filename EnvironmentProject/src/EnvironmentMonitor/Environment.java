@@ -99,6 +99,9 @@ public abstract class Environment implements Serializable{
 	public ArrayList<Job> getJobs(){
 		return jobs;
 	}
+	public int getJobNum() {
+		return jobs.size();
+	}
 	
 	public double getLongitude() {
 		return longitude;
