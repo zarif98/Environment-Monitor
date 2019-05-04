@@ -113,7 +113,7 @@ public class GUI_EnvironmentView implements IsDialog{
 							Environment currentEnvironment = getTableView().getItems().get(getIndex());
 							for(Object env : GUI_Main.environments.getList()) {
 								if (env.equals(currentEnvironment)) {
-									button.setOnAction( e-> GUI_JobView.dialog((Environment) env));
+									button.setOnAction( e-> GUI_JobAddView.dialog((Environment) env));
 								}
 							}
 						
