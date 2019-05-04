@@ -7,7 +7,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class GUI_Submit implements isDialog {
+public class GUI_Submit implements IsDialog {
 
 	/**
 	 * Code for dialog in which 

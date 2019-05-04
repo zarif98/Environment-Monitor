@@ -15,7 +15,7 @@ import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
-public class GUI_MakeEnvironment implements isDialog {
+public class GUI_MakeEnvironment implements IsDialog {
 
 	/**
 	 * Code for dialog in which 

@@ -15,7 +15,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class GUI_FindJobs implements isDialog {
+public class GUI_FindJobs implements IsDialog {
 
 	/**
 	 * Code for dialog in which 

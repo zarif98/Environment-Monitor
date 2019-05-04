@@ -30,7 +30,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class GUI_EnvironmentAddView implements isDialog{
+public class GUI_EnvironmentAddView implements IsDialog{
 	static TableView<Environment> envView = new TableView<Environment>(); 
 	public static void dialog() {
 		envView.getItems().clear();

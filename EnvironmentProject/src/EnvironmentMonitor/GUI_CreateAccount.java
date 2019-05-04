@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class GUI_CreateAccount implements isDialog {
+public class GUI_CreateAccount implements IsDialog {
 	
 	/**
 	 * Code for dialog in which a new account is created

@@ -1,5 +1,5 @@
 package EnvironmentMonitor;
 
-public interface isDialog {
+public interface IsDialog {
 	
 }

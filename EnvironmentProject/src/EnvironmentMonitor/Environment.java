@@ -1,17 +1,17 @@
 package EnvironmentMonitor;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 
 public abstract class Environment implements Serializable{
 	private static final long serialVersionUID = -1507661411248543998L;
-	private ArrayList<Guide> guides;
-	private ArrayList<Organism> organisms;
+	private HashSet<Guide> guides;
+	private HashSet<Organism> organisms;
 	private LocalDate lastCleanedDate;
-	private ArrayList<Job> jobs;
-	private ArrayList<Volunteer> volunteers;
+	private HashSet<Job> jobs;
+	private HashSet<Volunteer> volunteers;
 	protected String environmentName;
 	protected double longitude;
 	protected double latitude;
@@ -22,12 +22,13 @@ public abstract class Environment implements Serializable{
 	 * @param latitude
 	 * @param longitude
 	 */
-	public Environment(String environmentName, double latitude
-			, double longitude) {
+	public Environment(String environmentName, double latitude, double longitude) {
 		this.environmentName = environmentName;
 		this.longitude = longitude;
 		this.latitude = latitude;
-		jobs = new ArrayList<Job>();
+		jobs = new HashSet<Job>();
+		organisms = new HashSet<Organism>();
+		guides = new HashSet<Guide>();
 	}
 	
 	/**
@@ -96,7 +97,7 @@ public abstract class Environment implements Serializable{
 	 * Getter for list of jobs
 	 * @return
 	 */
-	public ArrayList<Job> getJobs(){
+	public HashSet<Job> getJobs(){
 		return jobs;
 	}
 	public int getJobNum() {
