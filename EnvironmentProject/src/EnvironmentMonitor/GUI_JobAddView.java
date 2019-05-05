@@ -1,6 +1,8 @@
 package EnvironmentMonitor;
 
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
@@ -35,9 +37,10 @@ public class GUI_JobAddView implements IsDialog{
 	 * Code for dialog in which 
 	 */
 	static TableView<Job> jobView = new TableView<Job>();
-	
+	static Logger logger = Logger.getLogger(GUI_JobAddView.class.getName());
 	
 	public static void dialog(Environment environment) {
+		logger.log(Level.INFO, "Viewing jobs for " + environment.environmentName);
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("Showing all jobs for selected Job");
