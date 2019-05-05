@@ -1,5 +1,8 @@
 package EnvironmentMonitor;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -16,6 +19,9 @@ public class GUI_CreateAccount implements IsDialog {
 	 * Code for dialog in which a new account is created
 	 */
 	public static void dialog(UserList users) {
+		Logger logger = Logger.getLogger(GUI_CreateAccount.class.getName());
+		logger.setLevel(GUI_Main.loggingLevel);
+		
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("Create Account");
@@ -35,8 +41,10 @@ public class GUI_CreateAccount implements IsDialog {
 		submitButton.setOnMouseClicked(e -> {
 			if(users.usernameTaken(usernameInput.getText())){
 				System.err.println("Username taken");
+				logger.log(Level.WARNING, "The username entered has already been taken");
 			}
 			else {
+				logger.log(Level.INFO, "A new user has been created (" + usernameInput.getText() + ")");
 				users.add(new Volunteer(usernameInput.getText(), passwordInput.getText(), isAdmin.isSelected()));
 				stage.close();
 			}

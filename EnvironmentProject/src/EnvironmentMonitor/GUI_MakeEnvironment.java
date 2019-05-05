@@ -1,14 +1,17 @@
 package EnvironmentMonitor;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -20,11 +23,16 @@ public class GUI_MakeEnvironment implements IsDialog {
 	/**
 	 * Code for dialog in which 
 	 */
+	
 	public static void dialog(EnvironmentList environments) {
+		Logger logger =
+				Logger.getLogger(GUI_MakeEnvironment.class.getName());
+		logger.setLevel(GUI_Main.loggingLevel);
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("Make New Environment");
 		stage.setMinWidth(400);
+		
 		
 		//Textfield stuff
 		TextField environmentName = new TextField();
@@ -57,6 +65,7 @@ public class GUI_MakeEnvironment implements IsDialog {
 						(environmentName.getText(), Double.parseDouble(latitude.getText())
 								, Double.parseDouble(longitude.getText()));
 				environments.add(waterAndLandEnvironment);
+				logger.log(Level.WARNING, "New Land and Water Environment Created");
 				showStage(waterAndLandEnvironment);
 			}
 			
@@ -65,6 +74,7 @@ public class GUI_MakeEnvironment implements IsDialog {
 						(environmentName.getText(), Double.parseDouble(latitude.getText())
 								, Double.parseDouble(longitude.getText()));
 				environments.add(waterEnvironment);
+				logger.log(Level.WARNING, "New Water Environment Created");
 				showStage(waterEnvironment);
 			}
 			//
@@ -74,12 +84,14 @@ public class GUI_MakeEnvironment implements IsDialog {
 						(environmentName.getText(), Double.parseDouble(latitude.getText())
 								, Double.parseDouble(longitude.getText()));
 				environments.add(landEnvironment);
+				logger.log(Level.WARNING, "New Land Environment Created");
 				showStage(landEnvironment);
 			}
 			
 			
 			else{
 				Alert alert = new Alert(AlertType.WARNING);
+				logger.log(Level.SEVERE, "Environment Creation Error");
 				alert.setTitle("Environment Creation Error");
 				alert.setHeaderText("Please check off one of the check boxes");
 				alert.showAndWait();

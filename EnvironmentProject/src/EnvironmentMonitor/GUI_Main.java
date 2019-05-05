@@ -1,16 +1,23 @@
 package EnvironmentMonitor;
 
 
-import javafx.animation.ScaleTransition;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -19,7 +26,8 @@ public class GUI_Main extends Application{
 	public static final UserList users = new UserList();
 	public static final JobList jobs = new JobList();
 	public static final EnvironmentList environments = new EnvironmentList();
-
+	public static Level loggingLevel = Level.INFO;
+	private static Logger logger = Logger.getLogger(GUI_Main.class.getName());
 	/**
 	 * Main method launches the application and calls the start method
 	 * @param args no command line for this program
@@ -46,6 +54,7 @@ public class GUI_Main extends Application{
 	 */
 	private void setUpLogin(BorderPane mainPane) {
 		//Create controls to interact with
+		logger.setLevel(loggingLevel);
 		Label loginLabel = new Label();
 		loginLabel.setText("Sign in to your account");
 
@@ -64,10 +73,12 @@ public class GUI_Main extends Application{
 		loginButton.setOnMouseClicked(e -> {
 			Volunteer user = users.getUser(usernameInput.getText(), passwordInput.getText());
 			if(user != null) {
+				logger.log(Level.INFO, usernameInput.getText() + " has successfully logged in." );
 				setupLoggedIn(mainPane, users.getUser(usernameInput.getText(), passwordInput.getText()));
 			}
 			else {
 				System.err.println("Invalid Username/Password");
+				logger.log(Level.SEVERE, "Attempted log in with invalid username or password");
 			}
 		});
 
@@ -105,10 +116,21 @@ public class GUI_Main extends Application{
 		submitWork.setText("Submit Work");
 		submitWork.setOnAction(e -> GUI_Submit.dialog());
 
+		Button loggingLevel = new Button();
+		loggingLevel.setText("Log Level");
+		loggingLevel.setOnAction(e -> adjustLoggingLevel());
+		
+		HBox pane = new HBox(20);
+		pane.getChildren().addAll(loggingLevel, submitWork);
+		pane.setAlignment(Pos.BASELINE_CENTER);
+		pane.setStyle("-fx-background-color: White;");
+		pane.setPadding(new Insets(20,20,20,20));
+		
 		//place controls on pane (for all)
 		mainPane.setTop(welcomeLabel);
+		
 		mainPane.setCenter(findJobs);
-		mainPane.setBottom(submitWork);
+		mainPane.setBottom(pane);
 
 		BorderPane.setAlignment(welcomeLabel, Pos.CENTER);
 		BorderPane.setAlignment(findJobs, Pos.CENTER);
@@ -143,6 +165,64 @@ public class GUI_Main extends Application{
 			mainPane.setRight(null);
 			mainPane.setLeft(null);
 		}
+	}
+
+	private void adjustLoggingLevel() {
+		Stage newStage = new Stage();
+		VBox comp = new VBox();
+		Label adjustLabel = new Label("Adjust your logging level (Highest Number = Least Info Logged)");
+		Slider slider = new Slider(1, 5, 1);
+		comp.setAlignment(Pos.CENTER);
+		
+		
+		slider.setValue(2);
+		slider.setShowTickLabels(true);
+		slider.setShowTickMarks(true);
+		slider.setMajorTickUnit(1);
+		slider.setMinorTickCount(0);
+		slider.setBlockIncrement(1);
+		slider.setSnapToTicks(true);
+
+		Label currentLevel = new Label("Your selected level is: " + loggingLevel.toString() 
+		+ " (" + 2 + ")");
+		
+		slider.valueProperty().addListener(new ChangeListener() {
+
+			public void changed(ObservableValue arg0, Object arg1, Object arg2) {
+				if(slider.getValue() == 1) {
+					currentLevel.setText("Your selected level is: ALL (1)");
+					loggingLevel = Level.ALL;
+				}
+				else if(slider.getValue() == 2) {
+					currentLevel.setText("Your selected level is: INFO (2)");
+					loggingLevel = Level.INFO;
+				}
+				else if(slider.getValue() == 3) {
+					currentLevel.setText("Your selected level is: WARNING (3)");
+					loggingLevel = Level.WARNING;
+				}
+				else if(slider.getValue() == 4) {
+					currentLevel.setText("Your selected level is: SEVERE (4)");
+					loggingLevel = Level.SEVERE;
+				}
+				else if(slider.getValue() == 5){
+					currentLevel.setText("Your selected level is: OFF (5)");
+					loggingLevel = Level.OFF;
+				}
+				logger.setLevel(loggingLevel);
+				logger.log(Level.INFO, "Logging Level changed to: " + loggingLevel);
+				
+				
+			}
+			
+		});
+		comp.getChildren().addAll(adjustLabel, slider, currentLevel);
+		
+		
+
+		Scene stageScene = new Scene(comp,400, 100);
+		newStage.setScene(stageScene);
+		newStage.show();
 	}
 
 	/**
