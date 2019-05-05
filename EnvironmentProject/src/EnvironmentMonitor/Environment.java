@@ -95,19 +95,32 @@ public abstract class Environment implements Serializable{
 	
 	/**
 	 * Getter for list of jobs
-	 * @return
+	 * @return job list
 	 */
 	public HashSet<Job> getJobs(){
 		return jobs;
 	}
+	
+	/**
+	 * getter for number of jobs number of jobs
+	 * @return jobs size
+	 */
 	public int getJobNum() {
 		return jobs.size();
 	}
 	
+	/**
+	 * Getter for longitude
+	 * @return longitude
+	 */
 	public double getLongitude() {
 		return longitude;
 	}
 	
+	/**
+	 * Getter for latitude
+	 * @return latitude
+	 */
 	public double getLatitude() {
 		return latitude;
 	}
