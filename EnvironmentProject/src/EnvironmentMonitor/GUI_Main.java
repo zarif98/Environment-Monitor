@@ -35,7 +35,7 @@ public class GUI_Main extends Application{
 	 */
 	public void start(Stage primaryStage) throws Exception {
 		BorderPane mainPane = new BorderPane();
-		setupLogin(mainPane);
+		setUpLogin(mainPane);
 		Scene scene = new Scene(mainPane);
 		setStage(primaryStage, scene);
 	}
@@ -44,7 +44,7 @@ public class GUI_Main extends Application{
 	 * Set up the main view window with login details
 	 * @param mainPane
 	 */
-	private void setupLogin(BorderPane mainPane) {
+	private void setUpLogin(BorderPane mainPane) {
 		//Create controls to interact with
 		Label loginLabel = new Label();
 		loginLabel.setText("Sign in to your account");
