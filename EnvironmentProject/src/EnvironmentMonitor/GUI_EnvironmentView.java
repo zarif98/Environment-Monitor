@@ -23,6 +23,7 @@ public class GUI_EnvironmentView implements IsDialog{
 	 */
 	private static Logger logger = Logger.getLogger(GUI_EnvironmentView.class.getName());
 	public static void dialog() {
+		logger.setLevel(GUI_Main.loggingLevel);
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("Make New Job");

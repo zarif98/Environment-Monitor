@@ -21,6 +21,7 @@ public class GUI_EnvironmentAddView implements IsDialog{
 	static TableView<Environment> envView = new TableView<Environment>(); 
 	private static Logger logger = Logger.getLogger(GUI_EnvironmentAddView.class.getName());
 	public static void dialog() {
+		logger.setLevel(GUI_Main.loggingLevel);
 		envView.getItems().clear();
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);

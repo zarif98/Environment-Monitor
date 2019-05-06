@@ -40,6 +40,7 @@ public class GUI_JobAddView implements IsDialog{
 	static Logger logger = Logger.getLogger(GUI_JobAddView.class.getName());
 	
 	public static void dialog(Environment environment) {
+		logger.setLevel(GUI_Main.loggingLevel);
 		logger.log(Level.INFO, "Viewing jobs for " + environment.environmentName);
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
