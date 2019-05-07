@@ -140,9 +140,6 @@ public class GUI_EnvironmentAddView implements IsDialog{
 		GUI_Main.environments.getList().forEach(e->{
 			envView.getItems().add((Environment) e);
 		});
-		for(Object e : GUI_Main.environments.getList()){
-			envView.getItems().add((Environment) e);
-		}
 
 		VBox pane = new VBox(20);
 		pane.getChildren().addAll(envView, label, newenvironment);
