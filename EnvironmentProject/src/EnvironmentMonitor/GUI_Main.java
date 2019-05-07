@@ -114,7 +114,7 @@ public class GUI_Main extends Application{
 
 		Button submitWork = new Button();
 		submitWork.setText("Submit Work");
-		submitWork.setOnAction(e -> GUI_Submit.dialog());
+		submitWork.setOnAction(e -> GUI_Submit.dialog(volunteer));
 
 		Button loggingLevel = new Button();
 		loggingLevel.setText("Log Level");

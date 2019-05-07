@@ -1,5 +1,6 @@
 package EnvironmentMonitor;
-
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -7,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -15,13 +17,12 @@ import javafx.util.Callback;
 
 
 public class GUI_Submit implements IsDialog {
-	
-	static TableView<Job> userjobView = new TableView<Job>();
-
 	/**
 	 * Code for dialog in which 
 	 */
-	public static void dialog() {
+	public static void dialog(Volunteer user) {
+		TableView<Job> userjobView = new TableView<Job>();
+		
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("Log your work");
@@ -34,33 +35,28 @@ public class GUI_Submit implements IsDialog {
 		colDesc.setCellValueFactory(
 				new PropertyValueFactory<Job, String>("jobName"));
 
-		TableColumn<Job, String> colRemove = 
-				new TableColumn<Job, String>("Job Name");
-		Callback<TableColumn<Job, String>, TableCell<Job, String>> cellFactory = new Callback<TableColumn<Job, String>, TableCell<Job, String>>() {
-			public TableCell<Job, String> call(TableColumn<Job, String> param) {
-				final TableCell<Job, String> cell = new TableCell<Job, String>() {
-					private final Button button = new Button();
-
-					public void updateItem(String crn, boolean empty) {
-						if(empty) {
-							setGraphic(null);
-						} else {
-							Job currentJob = getTableView().getItems().get(getIndex());
-							
-							button.setText("Remove");
-							button.setAlignment(Pos.BASELINE_CENTER);
-							button.setMaxWidth(Double.MAX_VALUE);
-							setGraphic(button);
-						}
+		TableColumn<Job, Button> colRemove = 
+				new TableColumn<Job, Button>("Job Name");
+		colRemove.setCellValueFactory(  //clickable button which runs command in this class
+				new Callback<CellDataFeatures<Job, Button>, ObservableValue<Button>>() {
+					public ObservableValue<Button> call(CellDataFeatures<Job, Button> param) {
+						Job job = param.getValue();
+						Button btn = new Button();
+						btn.setText("Submit");
+						btn.setOnMouseClicked(e -> {
+							System.out.println("testing");
+							if(job instanceof CountingJob) {
+								GUI_SubmitCount.dialog((CountingJob)job);
+							}
+							user.removeJob(job);
+						});
+						return new ReadOnlyObjectWrapper<Button>(btn);
 					}
-				};
-				return cell;
-			}
-		};
+				});;
 		
-		colRemove.setCellFactory(cellFactory);
+		userjobView.getColumns().setAll(colDesc, colRemove);
 		
-		userjobView.getColumns().setAll(colRemove, colDesc);
+		userjobView.getItems().addAll(user.getJobs());
 		
 		
 		VBox pane = new VBox(20);
