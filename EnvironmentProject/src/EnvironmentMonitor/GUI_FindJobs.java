@@ -67,12 +67,12 @@ public class GUI_FindJobs implements IsDialog {
 							setGraphic(null);
 						} else {
 							Environment currentEnvironment = getTableView().getItems().get(getIndex());
-							for(Object env : GUI_Main.environments.getList()) {
-								if (env.equals(currentEnvironment)) {
-									button.setOnAction( e-> GUI_JobView.dialog((Environment) env, volunteer));
+							GUI_Main.environments.getList().forEach(env -> {
+								if(env.equals(currentEnvironment)) {
+									button.setOnAction(e -> GUI_JobView.dialog((Environment) env, volunteer));
 									jobsLabel.setText(volunteer.getCurrentJobsString());
 								}
-							}
+							});
 						
 							button.setText("View");
 							button.setAlignment(Pos.BASELINE_CENTER);
@@ -89,10 +89,9 @@ public class GUI_FindJobs implements IsDialog {
 		
 		
 		jobView.getColumns().setAll(colName, colDistanceTo, numJobs, colJobs);
-		
-		for(Object e : GUI_Main.environments.getList()){
+		GUI_Main.environments.getList().forEach(e ->{
 			jobView.getItems().add((Environment) e);
-		}
+		});
 		
 		
 //		TableColumn<Job, String> colAdd = 

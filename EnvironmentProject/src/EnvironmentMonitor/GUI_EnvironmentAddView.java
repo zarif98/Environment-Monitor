@@ -18,9 +18,9 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class GUI_EnvironmentAddView implements IsDialog{
-	
+
 	static TableView<Environment> envView = new TableView<Environment>(); 
-	
+
 	/**
 	 * Generates dialog containing tableview for environments add/drop
 	 */
@@ -39,13 +39,13 @@ public class GUI_EnvironmentAddView implements IsDialog{
 		colName.setMinWidth(100);
 		colName.setCellValueFactory(
 				new PropertyValueFactory<Environment, String>("environmentName"));
-		
+
 		TableColumn<Environment, String> colLong =
 				new TableColumn<Environment, String>("Longitude");
 		colLong.setMinWidth(80);
 		colLong.setCellValueFactory(
 				new PropertyValueFactory<Environment, String>("longitude"));
-		
+
 		TableColumn<Environment, String> colLat =
 				new TableColumn<Environment, String>("Latitude");
 		colLat.setMinWidth(80);
@@ -71,12 +71,12 @@ public class GUI_EnvironmentAddView implements IsDialog{
 							setGraphic(null);
 						} else {
 							Environment currentEnvironment = getTableView().getItems().get(getIndex());
-							for(Object env : GUI_Main.environments.getList()) {
-								if (env.equals(currentEnvironment)) {
-									button.setOnAction( e-> GUI_JobAddView.dialog((Environment) env));
+							GUI_Main.environments.getList().forEach(env ->{
+								if(env.equals(currentEnvironment)) {
+									button.setOnAction(e -> GUI_JobAddView.dialog((Environment) env));
 								}
-							}
-						
+							});
+
 							button.setText("View");
 							button.setAlignment(Pos.BASELINE_CENTER);
 							button.setMaxWidth(Double.MAX_VALUE);
@@ -89,7 +89,7 @@ public class GUI_EnvironmentAddView implements IsDialog{
 		};
 
 		colJobs.setCellFactory(cellFactoryJobs);
-		
+
 		Label label = new Label("Would you like to add an additional environment? Click here!");
 		Button newenvironment = new Button("Add Environment");
 		newenvironment.setOnAction(e -> {
@@ -100,7 +100,7 @@ public class GUI_EnvironmentAddView implements IsDialog{
 				envView.getItems().add((Environment) env);
 			}
 		});
-		
+
 		TableColumn<Environment, String> colRemove = 
 				new TableColumn<Environment, String>("Remove Environments");
 		Callback<TableColumn<Environment, String>, TableCell<Environment, String>> cellFactory = new Callback<TableColumn<Environment, String>, TableCell<Environment, String>>() {
@@ -115,7 +115,7 @@ public class GUI_EnvironmentAddView implements IsDialog{
 							Environment currentEnvironment = getTableView().getItems().get(getIndex());
 							button.setOnAction( e-> {
 								showStage(currentEnvironment);
-								
+
 							}
 									);
 							button.setText("Remove");
@@ -128,8 +128,8 @@ public class GUI_EnvironmentAddView implements IsDialog{
 				return cell;
 			}
 		};
-		
-		
+
+
 
 		colRemove.setCellFactory(cellFactory);
 
@@ -152,8 +152,8 @@ public class GUI_EnvironmentAddView implements IsDialog{
 		stage.setScene(scene);
 		stage.showAndWait();
 	}
-	
-	
+
+
 	public static void showStage(Environment environment){
 
 		Stage newStage = new Stage();
