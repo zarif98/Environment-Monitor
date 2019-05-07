@@ -96,9 +96,9 @@ public class GUI_EnvironmentAddView implements IsDialog{
 			GUI_MakeEnvironment.dialog(GUI_Main.environments);
 			logger.log(Level.INFO, "New Environment added to list");
 			envView.getItems().clear();
-			for(Object env : GUI_Main.environments.getList()){
+			GUI_Main.environments.getList().forEach(env ->{
 				envView.getItems().add((Environment) env);
-			}
+			});
 		});
 
 		TableColumn<Environment, String> colRemove = 
@@ -137,7 +137,9 @@ public class GUI_EnvironmentAddView implements IsDialog{
 
 
 		envView.getColumns().setAll(colName, colLong, colLat, colDistanceTo, colJobs, colRemove);
-
+		GUI_Main.environments.getList().forEach(e->{
+			envView.getItems().add((Environment) e);
+		});
 		for(Object e : GUI_Main.environments.getList()){
 			envView.getItems().add((Environment) e);
 		}

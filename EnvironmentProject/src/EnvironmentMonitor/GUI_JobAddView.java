@@ -135,10 +135,9 @@ public class GUI_JobAddView implements IsDialog{
 
 
 		jobView.getColumns().setAll(colName, colDesc, colTask, colRemove, colGetThisJob);
-
-		for(Job j: environment.getJobs()) {
+		environment.getJobs().forEach(j -> {
 			jobView.getItems().add(j);
-		}
+		});
 		Label job = new Label("Want to add a job? Add it!");
 		
 		Button add = new Button("Add");
