@@ -1,6 +1,7 @@
 package EnvironmentMonitor;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -33,6 +34,13 @@ public abstract class ObjectList {
 			System.out.println("Object class not found");
 			c.printStackTrace();
 			return;
+		}
+		catch (FileNotFoundException e) {
+			try {
+				throw new ObjectListFileNotFound(STORAGE_FILE);
+			} catch (ObjectListFileNotFound e1) {
+				System.out.println(e.getMessage());
+			}
 		}
 		catch (Exception e) {
 			System.out.println(e.getClass().getSimpleName() + 
