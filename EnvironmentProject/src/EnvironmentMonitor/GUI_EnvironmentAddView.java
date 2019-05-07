@@ -1,30 +1,17 @@
 package EnvironmentMonitor;
 
-import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TreeTableColumn.CellDataFeatures;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -37,7 +24,9 @@ public class GUI_EnvironmentAddView implements IsDialog{
 	/**
 	 * Generates dialog containing tableview for environments add/drop
 	 */
+	private static Logger logger = Logger.getLogger(GUI_EnvironmentAddView.class.getName());
 	public static void dialog() {
+		logger.setLevel(GUI_Main.loggingLevel);
 		envView.getItems().clear();
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
@@ -105,6 +94,7 @@ public class GUI_EnvironmentAddView implements IsDialog{
 		Button newenvironment = new Button("Add Environment");
 		newenvironment.setOnAction(e -> {
 			GUI_MakeEnvironment.dialog(GUI_Main.environments);
+			logger.log(Level.INFO, "New Environment added to list");
 			envView.getItems().clear();
 			for(Object env : GUI_Main.environments.getList()){
 				envView.getItems().add((Environment) env);
@@ -179,6 +169,7 @@ public class GUI_EnvironmentAddView implements IsDialog{
 		removeJobs.setOnAction(e-> {
 			GUI_Main.environments.remove(environment);
 			envView.getItems().clear();
+			logger.log(Level.INFO, "Environment removed from list");
 			for(Object env: GUI_Main.environments.getList()) {
 				envView.getItems().add((Environment) env);
 			}
