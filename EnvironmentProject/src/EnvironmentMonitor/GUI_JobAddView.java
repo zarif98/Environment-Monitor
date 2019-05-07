@@ -32,7 +32,7 @@ import javafx.util.Callback;
 
 public class GUI_JobAddView implements IsDialog{
 	/**
-	 * Code for dialog in which 
+	 * Code for dialog in which jobs can be added via tableview
 	 */
 	static TableView<Job> jobView = new TableView<Job>();
 	

@@ -19,7 +19,7 @@ import javafx.util.Callback;
 public class GUI_FindJobs implements IsDialog {
 
 	/**
-	 * Code for dialog in which 
+	 * Code for dialog in which jobs are listed in a tableview
 	 */
 	
 	static Label jobsLabel = new Label();

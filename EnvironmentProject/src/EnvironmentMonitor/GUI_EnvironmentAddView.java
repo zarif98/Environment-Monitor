@@ -31,7 +31,12 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class GUI_EnvironmentAddView implements IsDialog{
+	
 	static TableView<Environment> envView = new TableView<Environment>(); 
+	
+	/**
+	 * Generates dialog containing tableview for environments add/drop
+	 */
 	public static void dialog() {
 		envView.getItems().clear();
 		Stage stage = new Stage();
@@ -157,6 +162,7 @@ public class GUI_EnvironmentAddView implements IsDialog{
 		stage.setScene(scene);
 		stage.showAndWait();
 	}
+	
 	
 	public static void showStage(Environment environment){
 

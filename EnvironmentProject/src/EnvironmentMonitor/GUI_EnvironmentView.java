@@ -31,7 +31,7 @@ import javafx.util.Callback;
 
 public class GUI_EnvironmentView implements IsDialog{
 	/**
-	 * Code for dialog in which 
+	 * Code for dialog in which shows environments
 	 */
 	public static void dialog() {
 		Stage stage = new Stage();
