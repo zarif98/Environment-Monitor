@@ -69,11 +69,11 @@ public class GUI_EnvironmentView implements IsDialog{
 							setGraphic(null);
 						} else {
 							Environment currentEnvironment = getTableView().getItems().get(getIndex());
-							for(Object env : GUI_Main.environments.getList()) {
-								if (env.equals(currentEnvironment)) {
+							GUI_Main.environments.getList().forEach(env ->{
+								if(env.equals(currentEnvironment)) {
 									button.setOnAction( e-> GUI_JobAddView.dialog((Environment) env));
 								}
-							}
+							});
 						
 							button.setText("View");
 							button.setAlignment(Pos.BASELINE_CENTER);
@@ -95,18 +95,17 @@ public class GUI_EnvironmentView implements IsDialog{
 		newenvironment.setOnAction(e -> {
 			GUI_MakeEnvironment.dialog(GUI_Main.environments);
 			EnvironmentView.getItems().clear();
-			for(Object env : GUI_Main.environments.getList()){
+			GUI_Main.environments.getList().forEach(env->{
 				EnvironmentView.getItems().add((Environment) env);
-			}
+			});
 		});
 
 
 		EnvironmentView.getColumns().setAll(colName, colLong, colLat, colDistanceTo, colJobs);
 
-
-		for(Object e : GUI_Main.environments.getList()){
-			EnvironmentView.getItems().add((Environment) e);
-		}
+		GUI_Main.environments.getList().forEach(e->{
+			EnvironmentView.getItems().add((Environment)e);
+		});
 
 		VBox pane = new VBox(20);
 		pane.getChildren().addAll(EnvironmentView, label, newenvironment);
