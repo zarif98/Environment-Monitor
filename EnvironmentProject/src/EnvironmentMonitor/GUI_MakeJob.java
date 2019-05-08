@@ -1,12 +1,8 @@
 package EnvironmentMonitor;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
-
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -22,8 +18,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import java.time.LocalDate;
 
 public class GUI_MakeJob {
 
