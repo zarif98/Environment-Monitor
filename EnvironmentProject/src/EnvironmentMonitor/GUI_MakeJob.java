@@ -1,6 +1,8 @@
 package EnvironmentMonitor;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 import javafx.beans.value.ChangeListener;
@@ -37,8 +39,6 @@ public class GUI_MakeJob {
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("Make New Job");
 		stage.setMinWidth(500);
-		
-		ComboBox species = new ComboBox();
 
 
 		TextField jobNameInput = new TextField();
@@ -56,7 +56,7 @@ public class GUI_MakeJob {
 		descriptionLabel.setMaxWidth(Double.MAX_VALUE);
 		descriptionLabel.setAlignment(Pos.CENTER_LEFT);
 
-		ComboBox desiredTaskComboBox = new ComboBox();
+		ComboBox<DesiredTask> desiredTaskComboBox = new ComboBox();
 		ObservableList<DesiredTask> desiredTaskObservableList = FXCollections.observableArrayList(Arrays.asList(DesiredTask.values()));
 		desiredTaskComboBox.setItems(desiredTaskObservableList);
 
@@ -65,37 +65,21 @@ public class GUI_MakeJob {
 			dt = (DesiredTask) desiredTaskComboBox.getValue();
 		});
 
-		desiredTaskComboBox.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> {
-			if(newValue==DesiredTask.countAnimal) {
-				ObservableList<Species> speciesObservableList = FXCollections.observableArrayList(Arrays.asList(Species.values()));
-				species.setItems(speciesObservableList);
-				showStage();
-			}
-			else if(newValue==DesiredTask.countPlant) {
-				ObservableList<Species> speciesObservableList = FXCollections.observableArrayList(Arrays.asList(Species.values()));
-				species.setItems(speciesObservableList);
-				showStage();
-			}
-		});
-
 
 		Button submitButton = new Button();
 		submitButton.setText("Submit");
 		submitButton.setOnMouseClicked(e -> {
-			desiredTaskComboBox.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> {
-				if(newValue==DesiredTask.countAnimal) {
-					environment.addJob(new Job(jobNameInput.getText(), descriptionInput.getText(), dt, new Animal(LocalDate.now(), showStage() , Species.FOX ) ));
-				}
-				else if(newValue == DesiredTask.countAnimal) {
-					environment.addJob(new Job(jobNameInput.getText(), descriptionInput.getText(), dt, new Plant(LocalDate.now(), showStage(), Species.FINCH )));
-				}
-			});
 			
 			if(dt == null || jobNameInput.getText().isEmpty()|| descriptionInput.getText().isEmpty()) {
 				Alert alert = new Alert(AlertType.WARNING, "Please enter information for all fields!");
 				alert.setTitle("Not Enough Information");
 				alert.setHeaderText("Job Creation Error");
 				alert.showAndWait();
+			}
+			
+			else if(dt.requiresCounting()) {
+				showStage(environment, new Job(jobNameInput.getText(), descriptionInput.getText(), dt));
+				stage.close();
 			}
 			
 			else {
@@ -108,7 +92,7 @@ public class GUI_MakeJob {
 
 
 		VBox pane = new VBox(20);
-		pane.getChildren().addAll(nameLabel, jobNameInput, descriptionLabel, descriptionInput, desiredTaskComboBox,species, submitButton);
+		pane.getChildren().addAll(nameLabel, jobNameInput, descriptionLabel, descriptionInput, desiredTaskComboBox, submitButton);
 		pane.setAlignment(Pos.CENTER);
 		pane.setStyle("-fx-background-color: AntiqueWhite;");
 		pane.setPadding(new Insets(20,20,20,20));
@@ -117,16 +101,33 @@ public class GUI_MakeJob {
 		stage.setScene(scene);
 		stage.showAndWait();
 	}
-	public static int showStage(){
+	
+	public static void showStage(Environment environment, Job job){
 
 		Stage newStage = new Stage();
 		VBox comp = new VBox();
-		Label registration = new Label("How many organisms would you like for the worker to count?");
+		Label registration = new Label("Which organism would you like for the worker to count?");
 		TextField field = new TextField();
 		field.setPromptText("Number of Animals");
 		
-		Button addJobs = new Button("Add Number");
-		addJobs.setOnAction(e -> newStage.close());
+		Predicate<Species> typeCheck = job.getDesiredTask().equals(DesiredTask.countPlant) ?
+												(species -> species.isPlant()) :
+												(species -> !species.isPlant());
+		
+		ComboBox<Object> combo = new ComboBox<Object>();
+		if(job.getDesiredTask() == DesiredTask.countAnimal) {
+			combo.setItems(FXCollections.observableArrayList(
+					Arrays.asList(Species.values()).stream().filter(typeCheck).toArray()));
+		}
+		
+		
+		Button addJobs = new Button("Add Job");
+		addJobs.setOnAction(e -> {
+			Species species = (Species)combo.getValue();
+			Organism organism = species.isPlant() ? new Plant(0, species): new Animal(0, species);
+			environment.addJob(new CountingJob(job, organism));
+			newStage.close();
+		});
 		
 		comp.setAlignment(Pos.CENTER);
 		addJobs.setAlignment(Pos.CENTER_RIGHT);
@@ -137,12 +138,11 @@ public class GUI_MakeJob {
 
 
 
-		comp.getChildren().addAll(registration, field, addJobs);
+		comp.getChildren().addAll(registration, combo, addJobs);
 
 		Scene stageScene = new Scene(comp,400, 100);
 		newStage.setScene(stageScene);
 		newStage.show();
-		return Integer.parseInt(field.getText());
 	}
 
 }

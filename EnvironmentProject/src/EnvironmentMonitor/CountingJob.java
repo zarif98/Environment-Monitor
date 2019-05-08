@@ -17,6 +17,14 @@ public class CountingJob extends Job {
 	}
 	
 	/**
+	 * Constructor using existing job
+	 */
+	public CountingJob(Job job, Organism organism) {
+		super(job.getJobName(), job.getDescription(), job.getDesiredTask());
+		this.organism = organism;
+	}
+	
+	/**
 	 * Calls organism's recount method
 	 * @param count
 	 */

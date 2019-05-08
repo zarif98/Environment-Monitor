@@ -49,10 +49,10 @@ public class Job implements Serializable {
 	
 	/**
 	 * Getter for desired task
-	 * @return desiredTask's toString
+	 * @return desiredTask
 	 */
-	public String getDesiredTask() {
-		return desiredTask.toString();
+	public DesiredTask getDesiredTask() {
+		return desiredTask;
 	}
 
 	

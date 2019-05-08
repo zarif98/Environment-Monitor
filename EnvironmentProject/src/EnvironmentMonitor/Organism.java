@@ -14,7 +14,7 @@ public abstract class Organism {
 	 * @param amount
 	 * @param speciesName
 	 */
-	public Organism(LocalDate lastCounted, int amount, Species species) {
+	public Organism(int amount, Species species) {
 		lastCounted = LocalDate.now();
 		this.species = species;
 		this.amount = amount;

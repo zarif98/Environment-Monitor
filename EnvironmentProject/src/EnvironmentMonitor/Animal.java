@@ -10,7 +10,7 @@ public class Animal extends Organism {
 	 * @param amount
 	 * @param species
 	 */
-	public Animal(LocalDate lastCounted, int amount, Species species) {
-		super(lastCounted, amount, species);
+	public Animal(int amount, Species species) {
+		super(amount, species);
 	}
 }
