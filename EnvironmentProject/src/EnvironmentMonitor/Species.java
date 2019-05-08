@@ -54,6 +54,6 @@ public enum Species {
 	 * @return true if it's a producer, false if otherwise
 	 */
 	public boolean isPlant() {
-		return endangerment == EndangermentLevel.Producer;
+		return endangerment.equals(EndangermentLevel.Producer);
 	}
 }
