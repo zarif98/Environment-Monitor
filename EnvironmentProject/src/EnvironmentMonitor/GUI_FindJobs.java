@@ -93,37 +93,6 @@ public class GUI_FindJobs implements IsDialog {
 			jobView.getItems().add((Environment) e);
 		});
 		
-		
-//		TableColumn<Job, String> colAdd = 
-//				new TableColumn<Job, String>("Add Jobs?");
-//		Callback<TableColumn<Job, String>, TableCell<Job, String>> cellFactory = new Callback<TableColumn<Job, String>, TableCell<Job, String>>() {
-//			public TableCell<Job, String> call(TableColumn<Job, String> param) {
-//				final TableCell<Job, String> cell = new TableCell<Job, String>() {
-//					private final Button button = new Button();
-//
-//					public void updateItem(String crn, boolean empty) {
-//						if(empty) {
-//							setGraphic(null);
-//						} else {
-//							Job currentJob = getTableView().getItems().get(getIndex());
-//							button.setOnAction( e-> { 
-//								
-//							}
-//									);
-//							button.setText("Add");
-//							button.setAlignment(Pos.BASELINE_CENTER);
-//							button.setMaxWidth(Double.MAX_VALUE);
-//							setGraphic(button);
-//						}
-//					}
-//				};
-//				return cell;
-//			}
-//		};
-//		
-//		
-//
-//		colAdd.setCellFactory(cellFactory);
 
 		
 		VBox pane = new VBox(20);

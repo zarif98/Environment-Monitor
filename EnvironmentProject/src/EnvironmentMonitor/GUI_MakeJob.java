@@ -28,6 +28,7 @@ import java.time.LocalDate;
 public class GUI_MakeJob {
 
 	private static DesiredTask dt;
+	private static Species species1;
 	/**
 	 * Code for dialog in which 
 	 */
@@ -64,7 +65,6 @@ public class GUI_MakeJob {
 		desiredTaskComboBox.setOnAction(e -> {
 			dt = (DesiredTask) desiredTaskComboBox.getValue();
 		});
-
 
 		Button submitButton = new Button();
 		submitButton.setText("Submit");
@@ -143,6 +143,7 @@ public class GUI_MakeJob {
 		Scene stageScene = new Scene(comp,400, 100);
 		newStage.setScene(stageScene);
 		newStage.show();
+		addJobs.setOnAction(e -> newStage.close());
 	}
 
 }
