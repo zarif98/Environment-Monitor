@@ -136,7 +136,7 @@ public class GUI_EnvironmentAddView implements IsDialog{
 
 
 
-		envView.getColumns().setAll(colName, colLong, colLat, colDistanceTo, colJobs, colRemove);
+		envView.getColumns().setAll(colName, colLat, colLong, colDistanceTo, colJobs, colRemove);
 		GUI_Main.environments.getList().forEach(e->{
 			envView.getItems().add((Environment) e);
 		});

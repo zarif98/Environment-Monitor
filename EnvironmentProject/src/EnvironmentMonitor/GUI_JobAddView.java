@@ -143,6 +143,7 @@ public class GUI_JobAddView implements IsDialog{
 		Button add = new Button("Add");
 		add.setOnAction(e->{
 			GUI_MakeJob.dialog(environment);
+			stage.close();
 		});
 		
 		Button addJobs = new Button("Remove");

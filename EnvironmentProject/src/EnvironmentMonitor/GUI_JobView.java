@@ -86,6 +86,7 @@ public class GUI_JobView implements IsDialog{
 								if (o == currentJob) {
 									button.setOnAction(e-> {
 										volunteer.addJob((Job)o);
+										GUI_Main.users.serialize();
 										GUI_FindJobs.jobsLabel.setText(volunteer.getCurrentJobsString());
 									});
 								}

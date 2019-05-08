@@ -67,6 +67,7 @@ public class GUI_MakeEnvironment implements IsDialog {
 				environments.add(waterAndLandEnvironment);
 				logger.log(Level.WARNING, "New Land and Water Environment Created");
 				showStage(waterAndLandEnvironment);
+				stage.close();
 			}
 			
 			else if(waterEnvironmentBox.isSelected()) {
@@ -76,6 +77,7 @@ public class GUI_MakeEnvironment implements IsDialog {
 				environments.add(waterEnvironment);
 				logger.log(Level.WARNING, "New Water Environment Created");
 				showStage(waterEnvironment);
+				stage.close();
 			}
 			//
 			
@@ -86,6 +88,7 @@ public class GUI_MakeEnvironment implements IsDialog {
 				environments.add(landEnvironment);
 				logger.log(Level.WARNING, "New Land Environment Created");
 				showStage(landEnvironment);
+				stage.close();
 			}
 			
 			
@@ -115,6 +118,10 @@ public class GUI_MakeEnvironment implements IsDialog {
 		VBox comp = new VBox();
 		Label registration = new Label("Would you like to add Jobs to your registered environment?");
 		Button addJobs = new Button("Add Jobs");
+		Button close = new Button("No");
+		close.setOnAction(e -> {
+			newStage.close();
+		});
 		comp.setAlignment(Pos.CENTER);
 		addJobs.setAlignment(Pos.CENTER_RIGHT);
 		registration.setMaxWidth(Double.MAX_VALUE);
@@ -124,10 +131,11 @@ public class GUI_MakeEnvironment implements IsDialog {
 
 		addJobs.setOnAction(e-> {
 			GUI_MakeJob.dialog(env);
+			newStage.close();
 		});
 
 
-		comp.getChildren().addAll(registration, addJobs);
+		comp.getChildren().addAll(registration, addJobs, close);
 
 		Scene stageScene = new Scene(comp,400, 100);
 		newStage.setScene(stageScene);

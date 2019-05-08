@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -81,6 +82,21 @@ public class GUI_Main extends Application{
 				logger.log(Level.SEVERE, "Attempted log in with invalid username or password");
 			}
 		});
+		loginButton.setOnKeyPressed(e ->{
+			KeyCode keyCode = e.getCode();
+			if(keyCode.equals(KeyCode.ENTER)) {
+				Volunteer user = users.getUser(usernameInput.getText(), passwordInput.getText());
+				if(user != null) {
+					logger.log(Level.INFO, usernameInput.getText() + " has successfully logged in." );
+					setupLoggedIn(mainPane, users.getUser(usernameInput.getText(), passwordInput.getText()));
+				}
+				else {
+					System.err.println("Invalid Username/Password");
+					logger.log(Level.SEVERE, "Attempted log in with invalid username or password");
+				}
+			}
+		});
+		
 
 		//place controls on pane
 		mainPane.setTop(loginLabel);
