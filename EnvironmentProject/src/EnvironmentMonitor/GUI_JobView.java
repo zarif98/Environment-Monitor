@@ -36,10 +36,11 @@ public class GUI_JobView implements IsDialog{
 	 * Code for dialog in which a table is displayed for jobs
 	 */
 	static Logger logger = Logger.getLogger(GUI_JobView.class.getName());
-	static TableView<Job> jobView = new TableView<Job>();
 	
 	
 	public static void dialog(Environment environment, Volunteer volunteer) {
+		TableView<Job> jobView = new TableView<Job>();
+		
 		logger.setLevel(GUI_Main.loggingLevel);
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
@@ -121,7 +122,10 @@ public class GUI_JobView implements IsDialog{
 		stage.setScene(scene);
 		stage.showAndWait();
 	}
+	
+	
 	public static void showStage(Job job, Environment environment){
+		TableView<Job> jobView = new TableView<Job>();
 
 		Stage newStage = new Stage();
 		VBox comp = new VBox();

@@ -3,6 +3,9 @@ package EnvironmentMonitor;
 import java.util.Arrays;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
+
+import com.sun.glass.ui.Window.Level;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -137,7 +140,6 @@ public class GUI_MakeJob {
 		Scene stageScene = new Scene(comp,400, 100);
 		newStage.setScene(stageScene);
 		newStage.show();
-		addJobs.setOnAction(e -> newStage.close());
 	}
 
 }
