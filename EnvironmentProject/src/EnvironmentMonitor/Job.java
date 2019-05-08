@@ -11,6 +11,7 @@ public class Job implements Serializable {
 	private String name;
 	private String jobDescription;
 	private DesiredTask desiredTask;
+	private Organism organism;
 	
 	/**
 	 * Constructor for Job
@@ -19,6 +20,12 @@ public class Job implements Serializable {
 	 * @param desiredTask
 	 */
 	public Job(String name, String jobDescription, DesiredTask desiredTask) {
+		this.name = name;
+		this.jobDescription = jobDescription;
+		this.desiredTask = desiredTask;
+	}
+	
+	public Job(String name, String jobDescription, DesiredTask desiredTask, Organism organism) {
 		this.name = name;
 		this.jobDescription = jobDescription;
 		this.desiredTask = desiredTask;
