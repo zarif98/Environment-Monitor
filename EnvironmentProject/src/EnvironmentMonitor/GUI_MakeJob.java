@@ -26,6 +26,7 @@ import java.time.LocalDate;
 public class GUI_MakeJob {
 
 	private static DesiredTask dt;
+	private static Species species1;
 	/**
 	 * Code for dialog in which 
 	 */
@@ -64,16 +65,23 @@ public class GUI_MakeJob {
 		desiredTaskComboBox.setOnAction(e -> {
 			dt = (DesiredTask) desiredTaskComboBox.getValue();
 		});
+		
 
 		desiredTaskComboBox.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> {
 			if(newValue==DesiredTask.countAnimal) {
 				ObservableList<Species> speciesObservableList = FXCollections.observableArrayList(Arrays.asList(Species.values()));
 				species.setItems(speciesObservableList);
+				species.setOnAction(e -> {
+					species1 = (Species) species.getValue();
+				});
 				showStage();
 			}
 			else if(newValue==DesiredTask.countPlant) {
 				ObservableList<Species> speciesObservableList = FXCollections.observableArrayList(Arrays.asList(Species.values()));
 				species.setItems(speciesObservableList);
+				species.setOnAction(e -> {
+					species1 = (Species) species.getValue();
+				});
 				showStage();
 			}
 		});
@@ -84,10 +92,10 @@ public class GUI_MakeJob {
 		submitButton.setOnMouseClicked(e -> {
 			desiredTaskComboBox.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> {
 				if(newValue==DesiredTask.countAnimal) {
-					environment.addJob(new Job(jobNameInput.getText(), descriptionInput.getText(), dt, new Animal(LocalDate.now(), showStage() , Species.FOX ) ));
+					environment.addJob(new Job(jobNameInput.getText(), descriptionInput.getText(), dt, new Animal(LocalDate.now(), showStage() , species1 ) ));
 				}
 				else if(newValue == DesiredTask.countAnimal) {
-					environment.addJob(new Job(jobNameInput.getText(), descriptionInput.getText(), dt, new Plant(LocalDate.now(), showStage(), Species.FINCH )));
+					environment.addJob(new Job(jobNameInput.getText(), descriptionInput.getText(), dt, new Plant(LocalDate.now(), showStage(), species1 )));
 				}
 			});
 			
@@ -118,6 +126,7 @@ public class GUI_MakeJob {
 		stage.showAndWait();
 	}
 	public static int showStage(){
+		
 
 		Stage newStage = new Stage();
 		VBox comp = new VBox();
@@ -142,7 +151,9 @@ public class GUI_MakeJob {
 		Scene stageScene = new Scene(comp,400, 100);
 		newStage.setScene(stageScene);
 		newStage.show();
+		addJobs.setOnAction(e -> newStage.close());
 		return Integer.parseInt(field.getText());
+		
 	}
 
 }
